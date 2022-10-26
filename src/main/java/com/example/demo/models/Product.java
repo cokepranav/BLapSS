@@ -14,6 +14,15 @@ public class Product {
 	
 	private int inventory;
 
+	public Product(int p_id,int c_id,String title,String description,float price,int inv){
+		productId=p_id;
+		categoryId=c_id;
+		this.title=title;
+		this.description=description;
+		unitPrice=price;
+		inventory=inv;
+	}
+
 	public int getProductId() {
 		return productId;
 	}

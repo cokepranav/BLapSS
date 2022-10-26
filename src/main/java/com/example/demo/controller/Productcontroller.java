@@ -19,7 +19,7 @@ public class Productcontroller {
 
     @GetMapping("/Product")
     public String setProduct(Product product){
-//        productRepository.createProduct(product);
+        productRepository.createProduct(product);
         return "Product";
     }
 
