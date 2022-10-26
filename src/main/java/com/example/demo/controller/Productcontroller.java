@@ -4,6 +4,7 @@ import com.example.demo.dao.ProductRepository;
 import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
@@ -16,10 +17,10 @@ public class Productcontroller {
         this.productRepository = productRepository;
     }
 
-    @PostMapping("/Product")
+    @GetMapping("/Product")
     public String setProduct(Product product){
-        productRepository.createProduct(product);
-        return "create done amma next!!";
+//        productRepository.createProduct(product);
+        return "Product";
     }
 
     @PutMapping("/Product")
