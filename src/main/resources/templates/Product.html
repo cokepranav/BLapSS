@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
 <head>
-  <meta charset="UTF-8">
-  <title>idi product page amma</title>
+<meta charset="UTF-8">
+<title>idi product page amma</title>
 </head>
 <body>
 <h2>Bhai bhai bhai......</h2>
+<table>
+  <tr>
+    <th>producId</th>
+    <th>categoryId</th>
+    <th>title</th>
+    <th>description</th>
+    <th>unitPrice</th>
+    <th>inventory</th>
+  </tr>
+  <tr th:each="prods:${products}">
+      <td th:text="${prods.productId}"></td>
+    <td th:text="${prods.categoryId}"></td>
+    <td th:text="${prods.title}"></td>
+    <td th:text="${prods.description}"></td>
+    <td th:text="${prods.unitPrice}"></td>
+    <td th:text="${prods.inventory}"></td>
+  </tr>
+</table>
 </body>
 </html>

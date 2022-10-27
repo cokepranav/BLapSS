@@ -1,0 +1,43 @@
+<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+  <meta charset="UTF-8">
+  <title>Save krow</title>
+</head>
+<body>
+<h2>aarambikalama</h2>
+<table>
+  <form action="SaveProduct" method="post">
+    <tr>
+      <td><label for="productId">Product ID :</label></td>
+      <td><input type="number" name="productId"></td>
+    </tr>
+    <tr>
+      <td><label for="categoryId">Category ID :</label></td>
+      <td><input type="number" name="categoryId"></td>
+    </tr>
+    <tr>
+      <td><label for="title">Title :</label></td>
+      <td><input type="text" name="title"></td>
+    </tr>
+    <tr>
+      <td><label for="description">Description :</label></td>
+      <td><input type="text" name="description"></td>
+    </tr>
+    <tr>
+      <td><label for="unitPrice">Price :</label></td>
+      <td><input type="number" name="unitPrice"></td>
+    </tr>
+    <tr>
+      <td><label for="inventory">Stock :</label></td>
+      <td><input type="number" name="inventory"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="submit" name="Submit"></td>
+    </tr>
+  </form>
+
+</table>
+</body>
+</html>

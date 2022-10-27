@@ -23,8 +23,8 @@ public class BlapsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("running");
-		product=new Product(1,2,"nirma","saaf saaf peela peela",50,6);
-		productRepository.createProduct(product);
-		System.out.println(product.getDescription());
+//		product=new Product(2,2,"nirma","saaf saaf peela peela",50,6);
+//		productRepository.createProduct(product);
+//		System.out.println(product.getDescription());
 	}
 }
