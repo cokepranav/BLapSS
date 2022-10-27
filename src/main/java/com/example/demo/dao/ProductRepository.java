@@ -14,7 +14,7 @@ import com.example.demo.models.Product;
 public class ProductRepository {
 
 	@Autowired
-	JdbcTemplate jdbcTemplate;
+	private JdbcTemplate jdbcTemplate;
 
 	public void createProduct(Product product) {
 		String sql_query = "INSERT INTO Product (productId, categoryId, title, description, unitPrice, inventory) VALUES (?, ?, ?, ?, ?, ?)";
@@ -49,13 +49,16 @@ public class ProductRepository {
 
 	public List<Product> getAll() {
 		String sql_query = "SELECT * FROM Product";
-		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
+		System.out.println(sql_query);
+		return jdbcTemplate.query(sql_query, BeanPropertyRowMapper.newInstance(Product.class),new Object[]{});
+//		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
+//		return jdbcTemplate.query(sql_query,(rs,rowNum)->{return new Product(rs.getInt("productId"),rs.getInt("categoryId"),rs.getString("title"),rs.getString("description"),rs.getFloat("unitPrice"),rs.getInt("inventory"));});
 	}
 
 	public Product getProductById(int productId) {
 		try {
 			String sql_query = "SELECT * FROM Product WHERE productId = ?";
-			return jdbcTemplate.queryForObject(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { productId });
+			return jdbcTemplate.queryForObject(sql_query, BeanPropertyRowMapper.newInstance(Product.class), new Object[] { productId });
 		} catch (EmptyResultDataAccessException e) {
 			// TODO: handle exception
 			return null;

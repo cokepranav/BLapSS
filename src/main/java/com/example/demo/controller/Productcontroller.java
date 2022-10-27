@@ -4,29 +4,47 @@ import com.example.demo.dao.ProductRepository;
 import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class Productcontroller {
-    private final ProductRepository productRepository;
-
     @Autowired
-    public Productcontroller(ProductRepository productRepository) {
-        this.productRepository = productRepository;
-    }
+    private ProductRepository productRepository;
 
-    @GetMapping("/Product")
-    public String setProduct(Product product){
+
+    @PostMapping("/Product")
+    public String setProduct(@RequestBody Product product){
         productRepository.createProduct(product);
         return "Product";
     }
 
     @PutMapping("/Product")
-    public String updateProduct(Product product){
+    public String updateProduct(@RequestBody Product product){
         productRepository.updateProduct(product);
-        return "update ayyindi amma next!!";
+        return "Product";
+    }
+
+    @DeleteMapping("/Product")
+    public String deleteproduct(@RequestBody Product product){
+        productRepository.deleteProduct(product);
+        return "Product";
+    }
+
+    @GetMapping("/Products")
+    public String getALlpers(Model model){
+        model.addAttribute("prouducts", productRepository.getAll());
+        List<Product> p=productRepository.getAll();
+        System.out.println(p);
+        return "product";
+    }
+    @GetMapping("/Product/{id}")
+    public String getallproducts(@PathVariable("id")int id){
+        Product p=productRepository.getProductById(id);
+        System.out.println(p);
+        return "Product";
     }
 
 }
