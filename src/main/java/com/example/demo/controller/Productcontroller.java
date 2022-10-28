@@ -17,11 +17,12 @@ public class Productcontroller {
     private ProductRepository productRepository;
 
 //    @GetMapping("/SaveProduct")
-    @RequestMapping(path="/SaveProduct",method={RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(path="/SaveProduct",method={RequestMethod.POST,RequestMethod.GET})
     public String setProduct(@ModelAttribute Product product){
 //        String ef=request.getParameter("title");
 //        System.out.println(ef);
-        productRepository.createProduct(product);
+        if(product.getProductId()!=0){
+        productRepository.createProduct(product);}
 //        model.addAttribute("newProduct",product);
         return "Productform";
     }
