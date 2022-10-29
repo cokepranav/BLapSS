@@ -1,61 +1,52 @@
 package com.example.demo.models;
 
 public class Shipper {
-	
 	private int shipperId;
-	
-	private String firstName;
-	
-	private String lastName;
-	
+
+	private int name;
+
 	private String phoneNumber;
-	
-	private int shipperRating;
-	
+
+	private int rating;
+
 	public int getShipperId() {
 		return shipperId;
 	}
-	
+
 	public void setShipperId(int shipperId) {
 		this.shipperId = shipperId;
 	}
-	
-	public String getFirstName() {
-		return firstName;
+
+	public int getName() {
+		return name;
 	}
-	
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+
+	public void setName(int name) {
+		this.name = name;
 	}
-	
-	public String getLastName() {
-		return lastName;
-	}
-	
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-	
+
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	
+
+//	public String get
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-	public int getShipperRating() {
-		return shipperRating;
+
+	public int getRating() {
+		return rating;
 	}
-	
-	public void setShipperRating(int shipperRating) {
-		this.shipperRating = shipperRating;
+
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Shipper [shipperId=" + shipperId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", phoneNumber=" + phoneNumber + ", shipperRating=" + shipperRating + "]";
+		return "Shipper [shipperId=" + shipperId + ", name=" + name + ", phoneNumber=" + phoneNumber + ", rating="
+				+ rating + "]";
 	}
-	
+
 }

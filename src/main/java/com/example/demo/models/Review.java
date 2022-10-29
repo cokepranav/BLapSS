@@ -1,13 +1,13 @@
 package com.example.demo.models;
 
 public class Review {
-	
+
 	private int customerId;
-	
+
 	private int productId;
-	
+
 	private String description;
-	
+
 	private int rating;
 
 	public int getCustomerId() {
@@ -47,6 +47,6 @@ public class Review {
 		return "Review [customerId=" + customerId + ", productId=" + productId + ", description=" + description
 				+ ", rating=" + rating + "]";
 	}
-	
-	
+
+
 }

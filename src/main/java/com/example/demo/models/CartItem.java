@@ -1,14 +1,16 @@
 package com.example.demo.models;
 
 public class CartItem {
-	
+
 	private int cartId;
-	
+
 	private int productId;
-	
-	private int quantity;
-	
+
 	private float unitPrice;
+
+	private int quantity;
+
+	private String size;
 
 	public int getCartId() {
 		return cartId;
@@ -26,14 +28,6 @@ public class CartItem {
 		this.productId = productId;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
 	public float getUnitPrice() {
 		return unitPrice;
 	}
@@ -42,11 +36,26 @@ public class CartItem {
 		this.unitPrice = unitPrice;
 	}
 
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
 	@Override
 	public String toString() {
-		return "CartItem [cartId=" + cartId + ", productId=" + productId + ", quantity=" + quantity + ", unitPrice="
-				+ unitPrice + "]";
+		return "CartItem [cartId=" + cartId + ", productId=" + productId + ", unitPrice=" + unitPrice + ", quantity="
+				+ quantity + ", size=" + size + "]";
 	}
-	
-	
+
 }

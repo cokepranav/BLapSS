@@ -13,10 +13,9 @@ public class CustomerRepository {
     JdbcTemplate jdbcTemplate;
 
     public void addCustomer(Customer customer){
-        String sql_query = "INSERT INTO Customer VALUES(?, ?, ?, ?, ?)";
+        String sql_query = "INSERT INTO Customer (firstName, lastName, emailAddress, userName, password) VALUES(?, ?, ?, ?, ?)";
         jdbcTemplate.update(
                 sql_query,
-                customer.getCustomerId(),
                 customer.getFirstName(),
                 customer.getLastName(),
                 customer.getUserName(),
@@ -37,6 +36,15 @@ public class CustomerRepository {
         String sql_query = "Update Customer SET  password = ? WHERE customerID = ?";
         jdbcTemplate.update(sql_query,
                 customer.getPassword(),
+                customer.getCustomerId()
+        );
+    }
+
+
+    public void updateEmail(Customer customer){
+        String sql_query = "Update Customer SET  emailAddress = ? WHERE customerID = ?";
+        jdbcTemplate.update(sql_query,
+                customer.getEmailAddress(),
                 customer.getCustomerId()
         );
     }

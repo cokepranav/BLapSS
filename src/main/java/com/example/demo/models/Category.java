@@ -1,10 +1,10 @@
 package com.example.demo.models;
 
 public class Category {
-	
+
 	private int categoryId;
-	
-	private String name;
+
+	private String title;
 
 	public int getCategoryId() {
 		return categoryId;
@@ -14,17 +14,17 @@ public class Category {
 		this.categoryId = categoryId;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	@Override
 	public String toString() {
-		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
+		return "Category [categoryId=" + categoryId + ", title=" + title + "]";
 	}
-	
+
 }

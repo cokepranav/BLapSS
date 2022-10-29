@@ -13,32 +13,30 @@ public class CategoryRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
     public void createCategory(Category category) {
-        String sql_query = "INSERT INTO Category (categoryId,name) VALUES (?, ?)";
+        String sql_query = "INSERT INTO Category (name) VALUES (?)";
         jdbcTemplate.update(sql_query,
-                category.getCategoryId(),
-                category.getName()
-
+                category.getTitle()
         );
     }
 
     public void updateCategory(Category category) {
-        String sql_query = "UPDATE Category SET categoryId = ? WHERE name = ?";
+        String sql_query = "UPDATE Category SET name = ? WHERE categoryId = ?";
         jdbcTemplate.update(sql_query,
-                category.getCategoryId(),
-                category.getName()
+                category.getTitle(),
+                category.getCategoryId()
         );
     }
 
     public void deleteCategory(Category category) {
-        String sql = "DELETE FROM CartItem WHERE categoryId = ?";
+        String sql = "DELETE FROM Category WHERE categoryId = ?";
         jdbcTemplate.update(sql,
                 category.getCategoryId()
         );
 
     }
 
-    public List<Category> getCategoryByCartId(String cartId) {
-        String sql = "SELECT * FROM Cart WHERE cartID=?";
+    public List<Category> getCategoryByCategoryId(String cartId) {
+        String sql = "SELECT * FROM Category WHERE categoryId=?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Category.class), new Object[]{cartId});
     }
 

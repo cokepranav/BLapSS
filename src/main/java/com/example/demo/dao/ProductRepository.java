@@ -14,17 +14,19 @@ import com.example.demo.models.Product;
 public class ProductRepository {
 
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	JdbcTemplate jdbcTemplate;
 
 	public void createProduct(Product product) {
-		String sql_query = "INSERT INTO Product (productId, categoryId, title, description, unitPrice, inventory) VALUES (?, ?, ?, ?, ?, ?)";
+		String sql_query = "INSERT INTO Product (categoryId, title, imageLink, description, unitPrice, smallInStock, mediumInStock, largeInStock,) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql_query,
-				product.getProductId(),
 				product.getCategoryId(),
 				product.getTitle(),
+				product.getImageLink(),
 				product.getDescription(),
 				product.getUnitPrice(),
-				product.getInventory()
+				product.getSmallInStock(),
+				product.getMediumInStock(),
+				product.getLargeInStock()
 		);
 	}
 
@@ -35,7 +37,9 @@ public class ProductRepository {
 				product.getTitle(),
 				product.getDescription(),
 				product.getUnitPrice(),
-				product.getInventory(),
+				product.getSmallInStock(),
+				product.getMediumInStock(),
+				product.getLargeInStock(),
 				product.getProductId()
 		);
 	}
@@ -49,16 +53,13 @@ public class ProductRepository {
 
 	public List<Product> getAll() {
 		String sql_query = "SELECT * FROM Product";
-		System.out.println(sql_query);
-		return jdbcTemplate.query(sql_query, BeanPropertyRowMapper.newInstance(Product.class),new Object[]{});
-//		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
-//		return jdbcTemplate.query(sql_query,(rs,rowNum)->{return new Product(rs.getInt("productId"),rs.getInt("categoryId"),rs.getString("title"),rs.getString("description"),rs.getFloat("unitPrice"),rs.getInt("inventory"));});
+		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
 	}
 
 	public Product getProductById(int productId) {
 		try {
 			String sql_query = "SELECT * FROM Product WHERE productId = ?";
-			return jdbcTemplate.queryForObject(sql_query, BeanPropertyRowMapper.newInstance(Product.class), new Object[] { productId });
+			return jdbcTemplate.queryForObject(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { productId });
 		} catch (EmptyResultDataAccessException e) {
 			// TODO: handle exception
 			return null;

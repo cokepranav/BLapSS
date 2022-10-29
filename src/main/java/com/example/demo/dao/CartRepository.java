@@ -18,18 +18,18 @@ public class CartRepository {
     JdbcTemplate jdbcTemplate;
 
     public void createCart(Cart cart) {
-        String sql_query = "INSERT INTO cart (cartId, customerId) VALUES (?, ?)";
+        String sql_query = "INSERT INTO cart (cartId, createdDate) VALUES (?, ?)";
         jdbcTemplate.update(sql_query,
                 cart.getCartId(),
-                cart.getCustomerId()
+                cart.getCreatedDate()
         );
     }
 
     public void updateCart(Cart cart) {
-        String sql_query = "UPDATE cart SET customerId = ? WHERE cartId = ?";
+        String sql_query = "UPDATE cart SET createdDate = ? WHERE cartId = ?";
         jdbcTemplate.update(sql_query,
                 cart.getCartId(),
-                cart.getCustomerId()
+                cart.getCreatedDate()
         );
     }
 

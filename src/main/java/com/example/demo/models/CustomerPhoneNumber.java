@@ -1,9 +1,9 @@
 package com.example.demo.models;
 
 public class CustomerPhoneNumber {
-	
+
 	private int customerId;
-	
+
 	private String phoneNumber;
 
 	public int getCustomerId() {
@@ -26,5 +26,5 @@ public class CustomerPhoneNumber {
 	public String toString() {
 		return "CustomerPhoneNumber [customerId=" + customerId + ", phoneNumber=" + phoneNumber + "]";
 	}
-	
+
 }

@@ -18,23 +18,21 @@ public class ShipperRepository {
     JdbcTemplate jdbcTemplate;
 
     public void createShipper(Shipper shipper) {
-        String sql_query = "INSERT INTO Shipper (shipperId, firstName, lastName, phoneNumber, shipperRating) VALUES (?, ?, ?, ?, ?)";
+        String sql_query = "INSERT INTO Shipper (shipperId,name,phoneNumber,rating) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql_query,
                 shipper.getShipperId(),
-                shipper.getFirstName(),
-                shipper.getLastName(),
+                shipper.getName(),
                 shipper.getPhoneNumber(),
-                shipper.getShipperRating()
+                shipper.getRating()
         );
     }
 
     public void updateShipper(Shipper shipper) {
-        String sql_query = "UPDATE Shipper SET firstName = ?, lastName = ?, phoneNumber = ?, shipperRating = ? WHERE shipperId = ?";
+        String sql_query = "UPDATE Shipper SET name=?, phoneNumber = ?, rating = ? WHERE shipperId = ?";
         jdbcTemplate.update(sql_query,
-                shipper.getFirstName(),
-                shipper.getLastName(),
+                shipper.getName(),
                 shipper.getPhoneNumber(),
-                shipper.getShipperRating(),
+                shipper.getRating(),
                 shipper.getShipperId()
         );
     }
