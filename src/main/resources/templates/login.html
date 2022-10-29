@@ -1,0 +1,29 @@
+<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Save krow</title>
+</head>
+<body>
+<h2>login panlama</h2>
+<div th:if="${param.error}">
+    <h3>Invalid username and password.</h3>
+</div>
+<form th:action="@{/login}" method="post">
+    <table>
+        <tr>
+            <td><label for="userName">Username :</label></td>
+            <td><input type="text" name="userName"></td>
+        </tr>
+        <tr>
+            <td><label for="password">Password :</label></td>
+            <td><input type="password" name="password"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="submit"></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

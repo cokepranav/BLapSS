@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class Homecontroller {
-    @GetMapping({"/hi"})
-    public void Home(){
-        System.out.println("jsdkklasd");
-//        return "template/home";
-    }
+//    @GetMapping({"/hi"})
+//    public void Home(){
+//        System.out.println("jsdkklasd");
+////        return "template/home";
+//    }
 }

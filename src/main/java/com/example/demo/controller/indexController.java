@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class indexController {
 
-    @GetMapping("/")
-    public String index(){
-//        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ working ++++++++++++++++++++++++++++++++\n++++++++++++++++++++++++++++++++++++++++++++\n+++++++++++++++++++++++++++");
-        return "index";
-    }
+//    @GetMapping("/")
+//    public String index(){
+////        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ working ++++++++++++++++++++++++++++++++\n++++++++++++++++++++++++++++++++++++++++++++\n+++++++++++++++++++++++++++");
+//        return "index";
+//    }
 }
