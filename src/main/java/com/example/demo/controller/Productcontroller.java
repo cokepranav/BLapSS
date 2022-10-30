@@ -17,6 +17,15 @@ public class Productcontroller {
     private ProductRepository productRepository;
 
 //    @GetMapping("/SaveProduct")
+
+    @RequestMapping(path = "/search", method = {RequestMethod.GET, RequestMethod.POST})
+    public String search(@ModelAttribute String keyword , Model model){
+        keyword = "Title";
+        List <Product> ProductsList = productRepository.search(keyword);
+        model.addAttribute("ProductsList", ProductsList);
+        return  "AllProducts";
+    }
+
     @RequestMapping(path="/SaveProduct",method={RequestMethod.POST,RequestMethod.GET})
     public String setProduct(@ModelAttribute Product product){
 //        String ef=request.getParameter("title");

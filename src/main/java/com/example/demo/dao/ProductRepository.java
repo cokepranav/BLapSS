@@ -16,9 +16,15 @@ public class ProductRepository {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
+	public List<Product> search(String keyword ){
+		String sql_query = "select * from Product where match(title) against (?)";
+		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { keyword } );
+	}
+
 	public void createProduct(Product product) {
-		String sql_query = "INSERT INTO Product (categoryId, title, imageLink, description, unitPrice, smallInStock, mediumInStock, largeInStock,) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql_query = "INSERT INTO Product (productId,categoryId, title, imageLink, description, unitPrice, smallInStock, mediumInStock, largeInStock) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql_query,
+				product.getProductId(),
 				product.getCategoryId(),
 				product.getTitle(),
 				product.getImageLink(),
