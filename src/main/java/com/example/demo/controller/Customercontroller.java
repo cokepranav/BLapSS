@@ -24,16 +24,21 @@ public class Customercontroller {
     @Autowired
     private CustomerRepository customerRepository;
 
-    @RequestMapping(path="/index",method= RequestMethod.GET)
-    public String indexduhh(){
-        System.out.println("sss");return "indexform";
-    }
+//    @RequestMapping(path="/index",method= RequestMethod.GET)
+//    public String indexduhh(){
+//        System.out.println("sss");return "indexform";
+//    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("customer", new Customer());
         model.addAttribute("error_msg", "");
         return "signup";
+    }
+
+    @GetMapping("/loginreg")
+    public String logireg(){
+        return "loginreg";
     }
 
     @RequestMapping(path="/signup",method=RequestMethod.POST)

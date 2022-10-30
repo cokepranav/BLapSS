@@ -10,4 +10,8 @@ public class Homecontroller {
 //        System.out.println("jsdkklasd");
 ////        return "template/home";
 //    }
+    @GetMapping({"/","/index","/home"})
+    public String index(){
+        return "index";
+    }
 }

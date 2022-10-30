@@ -1,0 +1,14 @@
+h2{
+    font-family: sans-serif;
+    font-size:1.53em;
+    text-transform:uppercase;
+}
+
+strong{
+    font-weight:700;
+    background-color:black;
+}
+
+p{
+    font-family: sans-serif;
+}

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -46,8 +47,16 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void configure(WebSecurity web) throws Exception{
+        web.ignoring().antMatchers("/css/**");
+        web.ignoring().antMatchers("/script/**");
+        web.ignoring().antMatchers("/images/**");
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/index/**","/signup/**","/register/**","/logout/**","/Product/**","/Products/**").permitAll();
+
+        http.authorizeRequests().antMatchers("/index/**","/signup/**","/register/**","/logout/**","/Product/**","/Products/**","/home/**","/loginreg/**").permitAll();
         http
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
