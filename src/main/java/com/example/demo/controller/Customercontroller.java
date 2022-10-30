@@ -31,6 +31,7 @@ public class Customercontroller {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
+        model.addAttribute("naam",securityservices.findLoggedInUsername());
         model.addAttribute("customer", new Customer());
         model.addAttribute("error_msg", "");
         return "signup";
@@ -38,26 +39,25 @@ public class Customercontroller {
 
     @GetMapping("/loginreg")
     public String logireg(){
-        return "loginreg";
+        return "logi";
     }
 
     @RequestMapping(path="/signup",method=RequestMethod.POST)
     public String makeit(Customer customer, Model model){
         if(customerRepository.getCustomerbyUsername(customer.getUserName()) != null)
         {
-            System.out.println("dadsdsa");
+            model.addAttribute("naam",securityservices.findLoggedInUsername());
             model.addAttribute("customer", new Customer());
             model.addAttribute("error_msg", "Username already exists!!");
             return "signup";
         }
         customerRepository.addCustomer(customer.getFirstName(), customer.getLastName(), customer.getEmailAddress(), customer.getUserName(), customer.getPassword());
-//        System.out.println(user.getUsername());
         return "redirect:/login";
     }
 
     @GetMapping("/login")
-    public String logi(){
-        System.out.println("!!!!");
+    public String logi(Model model){
+        model.addAttribute("naam",securityservices.findLoggedInUsername());
         return "login";
     }
 

@@ -79,7 +79,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("userName")
                 .passwordParameter("password")
 //                .loginProcessingUrl("/doLogin")
-                .failureUrl("/login?error=true").defaultSuccessUrl("/welcome", true).permitAll()
+                .failureUrl("/login?error=true").defaultSuccessUrl("/login", true).permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/customer/login?logout").permitAll();
 
 
