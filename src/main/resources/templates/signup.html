@@ -14,6 +14,7 @@
   <link  th:href="@{/css/magnific-popup.css}" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" >
   <link  th:href="@{/css/owl.carousel.css}" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <script type="text/javascript" th:src="@{/script/jQuery_v3.1.1.min.js}"></script>
   <script type="text/javascript" th:src="@{/script/owl.carousel.min.js}"></script>
   <script type="text/javascript" th:src="@{/script/bootstrap.min.js}"></script>
@@ -63,13 +64,14 @@
               <li class="account">
                 <!--                <a th:href="@{/login}">My Account</a>-->
                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                  <a th:href="@{/login}" th:case="${false}">Login</a>
+                  <a th:href="@{/login}" th:case="${false}"><i class="fa fa-power-off"></i>     Login</a>
                   <span th:case="${true}"><span th:text=" 'Hola!! ' + ${naam}">Hola!! User</span></span>
                   <span th:case="*">LOL!!</span>
                 </span></li>
               <li class="account">
                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                  <span th:case="${true}"><a href="#" th:href="@{/logou}"><span class="glyphicon glyphicon-log-out"></span> Logout</a>
+<!--                  <span class="glyphicon glyphicon-log-out"></span>-->
+                  <span th:case="${true}"><a href="#" th:href="@{/logou}"><i class="fa fa-power-off"></i> Logout</a>
                   </span></span>
               </li>
             </ul>
@@ -89,8 +91,8 @@
                 </span>
             </div>
           </div>
-          <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="themini"
-                                                                                                        src="./images/Logo.png"> </a> </div>
+          <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="BLAPS" height="150px" width="150px"
+                                                                                                        th:src="@{/images/mylogo.png}"> </a> </div>
           <div class="col-xs-6 col-sm-4 shopcart">
             <div id="cart" class="btn-group btn-block mtb_40">
               <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse"
@@ -164,66 +166,6 @@
           <div class="collapse navbar-collapse js-navbar-collapse">
             <ul id="menu" class="nav navbar-nav">
               <li> <a href="index.html">Home</a></li>
-              <!-- <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle"
-                  data-toggle="dropdown">Collection </a>
-                <ul class="dropdown-menu mega-dropdown-menu row">
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Women's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Man's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Children's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <li id="myCarousel" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg"
-                                class="img-responsive" alt="Banner1"></a></div>
-                          End Item
-                          <div class="item"> <a href="#"><img src="images/menu-banner2.jpg" class="img-responsive"
-                                alt="Banner1"></a></div>
-                          End Item
-                          <div class="item"> <a href="#"><img src="images/menu-banner3.jpg" class="img-responsive"
-                                alt="Banner1"></a></div>
-                          End Item
-                        </div>
-                        End Carousel Inner
-                      </li>
-                      /.carousel
-                    </ul>
-                  </li>
-                </ul>
-              </li> -->
               <li> <a href="category_page.html">Shop</a></li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
                 <ul class="dropdown-menu">
@@ -254,15 +196,10 @@
             <ul class="nav  main-navigation collapse in">
               <li><a href="#">Shirts</a></li>
               <li><a href="#">Pants</a></li>
-              <!-- <li><a href="#">Fashion</a></li>
-              <li><a href="#">Equipment</a></li>
-              <li><a href="#">Homeware</a></li>
-              <li><a href="#">Souvenirs</a></li>
-              <li><a href="#">Clearance</a></li> -->
             </ul>
           </div>
         </div>
-        <div class="left_banner left-sidebar-widget mt_30 mb_40"> <a href="#"><img src="images/left1.jpg"
+        <div class="left_banner left-sidebar-widget mt_30 mb_40"> <a href="#"><img th:src="@{images/jennie_signup.jpg}"
                                                                                    alt="Left Banner" class="img-responsive" /></a> </div>
       </div>
       <div class="col-sm-8 col-lg-9 mtb_20">
@@ -272,8 +209,8 @@
             <div class="panel-login panel">
               <div class="panel-heading">
                 <div class="row mb_20">
-                  <div class="col-xs-6">
-                    <a href="#" id="register-form-link">Register</a>
+                  <div class="col-md-3" style="font-size: 150%">
+                    Register
                   </div>
                 </div>
                 <hr>
@@ -292,20 +229,20 @@
                           <label class="col-4 col-form-label">First Name: </label>
                           <div class="col-8">
                             <input type="text" th:field="*{firstName}" class="form-control"
-                                   required minlength="2" maxlength="20"/>
+                                   required minlength="1" maxlength="50"/>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-4 col-form-label">Last Name: </label>
                           <div class="col-8">
                             <input type="text" th:field="*{lastName}" class="form-control"
-                                   required minlength="2" maxlength="20"/>
+                                   required minlength="0" maxlength="50"/>
                           </div>
                         </div>
                         <div class="form-group row">
                           <label class="col-4 col-form-label">Username: </label>
                           <div class="col-8">
-                            <input type="text" th:field="*{userName}" class="form-control" required />
+                            <input type="text" th:field="*{userName}" class="form-control" required minlength="1" />
                           </div>
                         </div>
                         <div class="form-group row">
@@ -320,33 +257,16 @@
                           <label class="col-4 col-form-label">Password: </label>
                           <div class="col-8">
                             <input type="password" th:field="*{password}" class="form-control"
-                                   required minlength="1" maxlength="100"/>
+                                   required minlength="6" maxlength="100"/>
                           </div>
                         </div>
-
-                        <!--      <div class="form-group row">-->
-                        <!--        <label class="col-4 col-form-label">First Name: </label>-->
-                        <!--        <div class="col-8">-->
-                        <!--          <input type="text" th:field="*{firstName}" class="form-control"-->
-                        <!--                 required minlength="2" maxlength="20"/>-->
-                        <!--        </div>-->
-                        <!--      </div>-->
-
-                        <!--      <div class="form-group row">-->
-                        <!--        <label class="col-4 col-form-label">Last Name: </label>-->
-                        <!--        <div class="col-8">-->
-                        <!--          <input type="text" th:field="*{lastName}" class="form-control"-->
-                        <!--                 required minlength="2" maxlength="20" />-->
-                        <!--        </div>-->
-                        <!--      </div>-->
-
                         <div>
                           <button type="submit" class="btn btn-primary col-sm-offset-4">Sign Up</button>
                         </div>
                         <div></div>
                         <div></div>
                         <div class="form-group col-sm-offset-2">
-                          <span>Already an ex-Blasper ?!<a href="#" th:href="@{/login}"><span class="glyphicon glyphicon-log-out"></span>Hop in</a></span>
+                          <span>Already an ex-Blasper?!  <a href="#" th:href="@{/login}"><i class="fa fa-chevron-right"></i>Hop in</a></span>
                         </div>
                       </div>
                     </form>
@@ -415,68 +335,4 @@
   <!-- =====  FOOTER END  ===== -->
   <a id="scrollup"><i class="fa-solid fa-up"></i></a>
 </div></body>
-</html>
-
-<!--<div>-->
-<!--  <h1>User Registration - Sign Up</h1>-->
-<!--  <p th:text = "${error_msg}" />-->
-<!--</div>-->
-<!--<form th:action="@{/signup}" th:object="${customer}"-->
-<!--      method="post" style="max-width: 600px; margin: 0 auto;">-->
-<!--  <div class="m-3">-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-4 col-form-label">First Name: </label>-->
-<!--      <div class="col-8">-->
-<!--        <input type="text" th:field="*{firstName}" class="form-control"-->
-<!--               required minlength="2" maxlength="20"/>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-4 col-form-label">Last Name: </label>-->
-<!--      <div class="col-8">-->
-<!--        <input type="text" th:field="*{lastName}" class="form-control"-->
-<!--               required minlength="2" maxlength="20"/>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-4 col-form-label">Username: </label>-->
-<!--      <div class="col-8">-->
-<!--        <input type="text" th:field="*{userName}" class="form-control" required />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="form-group row">-->
-<!--      <label class="col-4 col-form-label">E-mail: </label>-->
-<!--      <div class="col-8">-->
-<!--        <input type="email" th:field="*{emailAddress}" class="form-control" required />-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <div class="form-group row">-->
-<!--      <label class="col-4 col-form-label">Password: </label>-->
-<!--      <div class="col-8">-->
-<!--        <input type="password" th:field="*{password}" class="form-control"-->
-<!--               required minlength="1" maxlength="100"/>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash;      <div class="form-group row">&ndash;&gt;-->
-<!--    &lt;!&ndash;        <label class="col-4 col-form-label">First Name: </label>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <div class="col-8">&ndash;&gt;-->
-<!--    &lt;!&ndash;          <input type="text" th:field="*{firstName}" class="form-control"&ndash;&gt;-->
-<!--    &lt;!&ndash;                 required minlength="2" maxlength="20"/>&ndash;&gt;-->
-<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
-
-<!--    &lt;!&ndash;      <div class="form-group row">&ndash;&gt;-->
-<!--    &lt;!&ndash;        <label class="col-4 col-form-label">Last Name: </label>&ndash;&gt;-->
-<!--    &lt;!&ndash;        <div class="col-8">&ndash;&gt;-->
-<!--    &lt;!&ndash;          <input type="text" th:field="*{lastName}" class="form-control"&ndash;&gt;-->
-<!--    &lt;!&ndash;                 required minlength="2" maxlength="20" />&ndash;&gt;-->
-<!--    &lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    &lt;!&ndash;      </div>&ndash;&gt;-->
-
-<!--    <div>-->
-<!--      <button type="submit" class="btn btn-primary">Sign Up</button>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</form>-->
+</html>-->

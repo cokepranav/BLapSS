@@ -14,6 +14,12 @@ public class Customer {
 
 	private String password;
 
+	private String role;
+
+	public String getCustomerRole(){return role;}
+
+	public void setCustomerRole(String role){this.role=role;}
+
 	public int getCustomerId() {
 		return customerId;
 	}

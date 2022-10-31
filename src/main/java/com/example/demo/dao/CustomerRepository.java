@@ -35,11 +35,11 @@ public class CustomerRepository {
         }
     }
 
-    public void addCustomer(String firstName,String lastName,String emailAddress,String userName,String password){
+    public void addCustomer(String firstName,String lastName,String emailAddress,String userName,String password,String role){
         password=bCryptPasswordEncoder.encode(password);
-        String sql_query = "INSERT INTO Customer (firstName, lastName, emailAddress, userName, password) VALUES(?, ?, ?, ?, ?)";
+        String sql_query = "INSERT INTO Customer (firstName, lastName, emailAddress, userName, password, role) VALUES(?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(
-                sql_query,firstName,lastName,emailAddress,userName,password);
+                sql_query,firstName,lastName,emailAddress,userName,password,role);
     }
 
     public Customer getCustomerbyUsername(String userName){

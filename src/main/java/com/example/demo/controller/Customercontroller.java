@@ -51,7 +51,7 @@ public class Customercontroller {
             model.addAttribute("error_msg", "Username already exists!!");
             return "signup";
         }
-        customerRepository.addCustomer(customer.getFirstName(), customer.getLastName(), customer.getEmailAddress(), customer.getUserName(), customer.getPassword());
+        customerRepository.addCustomer(customer.getFirstName(), customer.getLastName(), customer.getEmailAddress(), customer.getUserName(), customer.getPassword(),"user");
         return "redirect:/login";
     }
 
