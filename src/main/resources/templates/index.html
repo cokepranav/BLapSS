@@ -186,7 +186,7 @@
                                     </li>
                                     <li class="col-md-3">
                                         <ul>
-                                            <li id="myCarousel" class="carousel slide" data-ride="carousel">
+                                            <li  th:id="myCarousel" class="carousel slide" data-ride="carousel">
                                                 <div class="carousel-inner">
                                                     <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg"
                                                                                                class="img-responsive" alt="Banner1"></a></div>
@@ -224,14 +224,57 @@
     </header>
     <!-- =====  HEADER END  ===== -->
     <!-- =====  BANNER STRAT  ===== -->
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img th:src="@{/images/b22.jpg}" alt="Los Angeles">
+            </div>
+
+            <div class="item">
+                <img th:src="@{/images/b22.jpg}" alt="Chicago">
+            </div>
+
+            <div class="item">
+                <img th:src="@{/images/b22.jpg}" alt="New York">
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
     <div class="banner">
         <div class="main-banner owl-carousel">
-            <div class="item"><a href="#"><img th:src="@{/images/main_banner1.jpg}" alt="Main Banner" class="img-responsive" /></a>
-            </div>
-            <div class="item"><a href="#"><img th:src="@{/images/main_banner2.jpg}" alt="Main Banner" class="img-responsive" /></a>
-            </div>
-            <div class="item"><a href="#"><img th:src="@{images/main_banner3.jpg}" alt="Main Banner" class="img-responsive" /></a>
-            </div>
+            <div class="main-banner owl-carousel owl-loaded owl-drag">
+
+
+                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4182px;">
+                    <div class="owl-item active" style="width: 1393.76px;">
+                        <div class="item"><a href="#"><img th:src="@{/images/b22.jpg}" alt="Main Banner" class="img-responsive"></a>
+                        </div></div>
+                    <div class="owl-item active" style="width: 1393.76px;"><div class="item"><a href="#"><img th:src="@{/images/b1.jpg}" alt="Main Banner" class="img-responsive"></a>
+                    </div></div>
+                    <div class="owl-item" style="width: 1393.76px;"><div class="item"><a href="#"><img th:src="@{/images/b22.jpg}" alt="Main Banner" class="img-responsive"></a>
+                    </div></div>
+                </div></div>
+                <div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div></div>
+
         </div>
     </div>
     <!-- =====  BANNER END  ===== -->
@@ -860,7 +903,7 @@
             <div class="cms_banner">
                 <div class="col-xs-12 mt_60">
                     <div id="subbanner4" class="sub-hover">
-                        <div class="sub-img"><a href="#"><img src="images/sub5.jpg" alt="Sub Banner5" class="img-responsive"></a>
+                        <div class="sub-img"><a href="#"><img th:src="@{images/men_shirt_b.jpg}"  alt="Sub Banner5" class="img-responsive"></a>
                         </div>
                     </div>
                 </div>
@@ -969,9 +1012,9 @@
                             <div class="product-grid">
                                 <div class="item">
                                     <div class="product-thumb">
-                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                data-name="product_image" src="images/product/product8.jpg" alt="Item" title="Item"
-                                                class="img-responsive"> <img src="images/product/product8-1.jpg" alt="Item" title="Item"
+                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="images/product/product8.jpg" alt="Item" title="Item"
+                                                class="img-responsive"> <img src="images/product/product8-1.jpg" alt="Item" title="Item">
+                                        </a>
                                         </div>
                                     </div>
                                     <div class="caption product-detail text-center">
