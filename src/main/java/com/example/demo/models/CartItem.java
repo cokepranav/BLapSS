@@ -1,8 +1,14 @@
 package com.example.demo.models;
 
+import com.example.demo.dao.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class CartItem {
 
-	private int cartId;
+	@Autowired
+	ProductRepository productRepository;
+
+	private int customerId;
 
 	private int productId;
 
@@ -12,12 +18,12 @@ public class CartItem {
 
 	private String size;
 
-	public int getCartId() {
-		return cartId;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCartId(int cartId) {
-		this.cartId = cartId;
+	public void setCustomerId(int cartId) {
+		this.customerId = customerId;
 	}
 
 	public int getProductId() {
@@ -54,8 +60,13 @@ public class CartItem {
 
 	@Override
 	public String toString() {
-		return "CartItem [cartId=" + cartId + ", productId=" + productId + ", unitPrice=" + unitPrice + ", quantity="
+		return "CartItem [customerId=" + customerId + ", productId=" + productId + ", unitPrice=" + unitPrice + ", quantity="
 				+ quantity + ", size=" + size + "]";
+	}
+
+	public String getProductTitle() {
+		Product product = productRepository.getProductById(this.productId);
+		return product.getTitle();
 	}
 
 }

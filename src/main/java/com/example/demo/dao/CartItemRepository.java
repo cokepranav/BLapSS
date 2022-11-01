@@ -1,6 +1,8 @@
 package com.example.demo.dao;
 
 import com.example.demo.models.CartItem;
+import com.example.demo.models.Customer;
+import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,39 +10,32 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+
 @Repository
 public class CartItemRepository {
+
+    @Autowired
+    ProductRepository productRepository;
+
     @Autowired
     JdbcTemplate jdbcTemplate;
-    public void createCartItem(CartItem cartItem) {
-        String sql_query = "INSERT INTO cartItem (cartId, productId,quantity,unitPrice) VALUES (?, ?, ?, ?)";
+
+
+    public List<CartItem> getCartItemsBycustomerId(int customerId) {
+        String sql = "SELECT * FROM CartItem WHERE customerId = ?";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CartItem.class), new Object[] { customerId });
+    }
+
+    public void addToCart(Customer customer, int productId, String size) {
+        Product product = productRepository.getProductById(productId);
+        String sql_query = "INSERT INTO CartItem (customerId, productId, quantity, size, unitPrice) VALUES (?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql_query,
-                cartItem.getCartId(),
-                cartItem.getProductId(),
-                cartItem.getQuantity(),
-                cartItem.getUnitPrice()
+                customer.getCustomerId(),
+                product.getProductId(),
+                1,
+                size,
+                product.getUnitPrice()
         );
-    }
-
-    public void updateCartItem(CartItem cartItem) {
-        String sql_query = "UPDATE cartItem SET productId = ? WHERE cartId = ?";
-        jdbcTemplate.update(sql_query,
-                cartItem.getCartId(),
-                cartItem.getProductId()
-        );
-    }
-
-    public void deleteCartItem(CartItem cartItem) {
-        String sql = "DELETE FROM CartItem WHERE cartId = ?";
-        jdbcTemplate.update(sql,
-                cartItem.getCartId()
-        );
-
-    }
-
-    public List<CartItem> getCartItemByCartId(String cartId) {
-        String sql = "SELECT * FROM Cart WHERE cartID=?";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(CartItem.class), new Object[]{cartId});
     }
 
 }

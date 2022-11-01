@@ -1,11 +1,13 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.CartItemRepository;
 import com.example.demo.dao.CustomerRepository;
 import com.example.demo.dao.ProductRepository;
 import com.example.demo.dao.ReviewRepository;
 import com.example.demo.models.Customer;
 import com.example.demo.models.Product;
 import com.example.demo.models.Review;
+import com.example.demo.service.SecurityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +15,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class Productcontroller {
+
+    @Autowired
+    private SecurityServices securityServices;
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    CartItemRepository cartItemRepository;
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -72,20 +82,39 @@ public class Productcontroller {
         return "Product";
     }
     @GetMapping("/Product/{id}")
-    public String getallproducts(@PathVariable("id")int id,Model model){
+    public String getSingleProduct(@PathVariable("id")int id,Model model){
 //        Product p=productRepository.getProductById(id);
-        model.addAttribute("products", productRepository.getProductById(id));
+        Product product = productRepository.getProductById(id);
+        model.addAttribute("products", product);
+        List<String> availableSizes = new ArrayList<String>();
+        if (product.getSmallInStock() > 0) availableSizes.add("S");
+        if (product.getMediumInStock() > 0) availableSizes.add("M");
+        if (product.getLargeInStock() > 0) availableSizes.add("L");
+        model.addAttribute("availableSizes", availableSizes);
         List<Review> r=reviewRepository.getProductReview(id);
         List<Review> r2=reviewRepository.getAvgProductReview(id);
         Customer d=customerRepository.getCustomerbyID(id);
-        System.out.println(r2);
-//        System.out.println(d);
-//        List<Customer> c=;
         model.addAttribute("customer",d);
         model.addAttribute("review",r);
         model.addAttribute("reviewAvg",r2);
 //        System.out.println(p);
         return "Product";
+    }
+
+    @GetMapping("/cart")
+    public String cart(Model model) {
+        return "Cart";
+    }
+
+    @PostMapping("/addToCart/{productId}")
+    public String addToCart(@RequestParam Map<String, String> body,@PathVariable("productId") int productId, Model model) {
+        System.out.println("CART CONTROLLER CALLED");
+        Customer customer = customerRepository.getCustomerbyUsername(securityServices.findLoggedInUsername());
+        System.out.println(customer.toString());
+        String size = body.get("size");
+        System.out.println(size);
+        cartItemRepository.addToCart(customer, productId, size);
+        return "redirect:/Products";
     }
 
 }
