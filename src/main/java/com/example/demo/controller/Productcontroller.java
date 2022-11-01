@@ -1,7 +1,11 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.CustomerRepository;
 import com.example.demo.dao.ProductRepository;
+import com.example.demo.dao.ReviewRepository;
+import com.example.demo.models.Customer;
 import com.example.demo.models.Product;
+import com.example.demo.models.Review;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,12 @@ import java.util.List;
 public class Productcontroller {
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ReviewRepository reviewRepository;
+
+    @Autowired
+    private CustomerRepository customerRepository;
 
 //    @GetMapping("/SaveProduct")
 
@@ -52,6 +62,8 @@ public class Productcontroller {
 //    @RequestMapping()
     public String getALlpers(Model model){
         model.addAttribute("products", productRepository.getAll());
+//        model.addAttribute("review",)
+
 //        ModelAndView modelAndView=new ModelAndView();
 //        modelAndView.setViewName("Product");
 //        modelAndView.addObject("products",p);
@@ -63,6 +75,15 @@ public class Productcontroller {
     public String getallproducts(@PathVariable("id")int id,Model model){
 //        Product p=productRepository.getProductById(id);
         model.addAttribute("products", productRepository.getProductById(id));
+        List<Review> r=reviewRepository.getProductReview(id);
+        List<Review> r2=reviewRepository.getAvgProductReview(id);
+        Customer d=customerRepository.getCustomerbyID(id);
+        System.out.println(r2);
+//        System.out.println(d);
+//        List<Customer> c=;
+        model.addAttribute("customer",d);
+        model.addAttribute("review",r);
+        model.addAttribute("reviewAvg",r2);
 //        System.out.println(p);
         return "Product";
     }

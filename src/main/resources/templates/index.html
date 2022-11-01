@@ -139,7 +139,7 @@
                             class="i-bar"><i class="fa fa-bars"></i></span></button>
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul id="menu" class="nav navbar-nav">
-                            <li> <a href="index.html">Home</a></li>
+                            <li> <a th:href="@{/index}">Home</a></li>
                             <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle"
                                                                    data-toggle="dropdown">Collection </a>
                                 <ul class="dropdown-menu mega-dropdown-menu row">
@@ -298,7 +298,7 @@
                     <div class="container-fluid" th:each="threeproducts : ${products}">
                         <div class="row justify-content-around mb-3">
                             <div class="col-lg-4">
-                                <a href="" th:href="@{/login}">
+                                <a href="" th:href="@{/Product/{id}(id=${threeproducts.productId})}">
                                 <div class="card" style="width:400px">
                                     <img class="card-img-top" th:src="@{${'/images/s'+threeproducts.productId+'.jpg'}}" alt="Card image cap">
                                     <div class="card-body">

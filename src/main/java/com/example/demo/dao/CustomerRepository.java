@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.models.Customer;
 
+import java.util.List;
+
 @Repository
 public class CustomerRepository {
 
@@ -84,6 +86,16 @@ public class CustomerRepository {
         try {
             String sqlst = "SELECT * FROM customer WHERE userName = ?";
             return jdbcTemplate.queryForObject(sqlst, BeanPropertyRowMapper.newInstance(Customer.class), new Object[] { username });
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+
+    }
+
+    public Customer getCustomerbyID(int id) {
+        try {
+            String sqlst = "SELECT * FROM customer WHERE customerId = ?";
+            return jdbcTemplate.queryForObject(sqlst, BeanPropertyRowMapper.newInstance(Customer.class), new Object[] { id });
         } catch (EmptyResultDataAccessException e) {
             return null;
         }

@@ -3,6 +3,7 @@ package com.example.demo.dao;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -46,6 +47,26 @@ public class ReviewRepository {
     public List<Review> getAll() {
         String sql_query = "SELECT * FROM Reivew";
         return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Review.class));
+    }
+
+    public List<Review> getAvgProductReview(int id){
+        try{
+        String sql_query = "SELECT avg(rating) as rating FROM Review where productId=?";
+        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });}
+        catch (EmptyResultDataAccessException e) {
+            // TODO: handle exception
+            return null;
+        }
+    }
+
+    public List<Review> getProductReview(int id){
+        try{
+            String sql_query = "SELECT * FROM Review where productId=?";
+            return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });}
+        catch (EmptyResultDataAccessException e) {
+            // TODO: handle exception
+            return null;
+        }
     }
 
 }

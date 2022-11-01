@@ -79,16 +79,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("userName")
                 .passwordParameter("password")
 //                .loginProcessingUrl("/doLogin")
-                .failureUrl("/login?error=true").defaultSuccessUrl("/login", true).permitAll()
+                .failureUrl("/login?error=true").defaultSuccessUrl("/index", true).permitAll()
                 .and().logout().logoutUrl("/logout").logoutSuccessUrl("/customer/login?logout").permitAll();
 
 
-    }
-//    @Bean
-//    @Override
-//    protected UserDetailsService userDetailsService(){
-//        List<UserDetails> users=new ArrayList<>();
-//        users.add(User.withDefaultPasswordEncoder().username("pranav").password("1234").roles("USER").build());
-//        return new InMemoryUserDetailsManager(users);
-//    }
-}
+    }}
+
