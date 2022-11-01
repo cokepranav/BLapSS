@@ -2542,20 +2542,6 @@ blockquote {
 .contact .fa {
   margin-right: 10px;
 }
-
-
-	* {
-		margin: 0;
-		padding: 0;
-	}
-
-    .header {
-
-        background: white;
-        color: #8c4d79;
-        font-size: 15px;
-      }
-
       ul {
         list-style-type: none;
      }
@@ -2755,6 +2741,7 @@ blockquote {
           .grid-item{
             padding:15px
           }
+
 
 
 

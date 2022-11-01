@@ -3,13 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Nike</title>
+    <title>BLAPS</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="Language" content="en-us">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
@@ -180,21 +181,8 @@
                                     </li>
                                     <li class="col-md-3">
                                         <ul>
-                                            <li  th:id="myCarousel" class="carousel slide" data-ride="carousel">
-                                                <div class="carousel-inner">
-                                                    <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg"
-                                                                                               class="img-responsive" alt="Banner1"></a></div>
-                                                    <!-- End Item -->
-                                                    <div class="item"> <a href="#"><img src="images/menu-banner2.jpg" class="img-responsive"
-                                                                                        alt="Banner1"></a></div>
-                                                    <!-- End Item -->
-                                                    <div class="item"> <a href="#"><img src="images/menu-banner3.jpg" class="img-responsive"
-                                                                                        alt="Banner1"></a></div>
-                                                    <!-- End Item -->
-                                                </div>
-                                                <!-- End Carousel Inner -->
-                                            </li>
-                                            <!-- /.carousel -->
+                                            <img class="sub-hover" th:src="@{/images/xnxx.jpeg}"
+                                                 style="height:50%;">
                                         </ul>
                                     </li>
                                 </ul>
@@ -219,85 +207,77 @@
     <!-- =====  HEADER END  ===== -->
     <!-- =====  BANNER STRAT  ===== -->
 
-<!--    <div id="myCarousel" class="carousel slide" data-ride="carousel">-->
-<!--        &lt;!&ndash; Indicators &ndash;&gt;-->
-<!--        <ol class="carousel-indicators">-->
-<!--            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>-->
-<!--            <li data-target="#myCarousel" data-slide-to="1"></li>-->
-<!--            <li data-target="#myCarousel" data-slide-to="2"></li>-->
-<!--        </ol>-->
 
-<!--        &lt;!&ndash; Wrapper for slides &ndash;&gt;-->
-<!--        <div class="carousel-inner">-->
-<!--            <div class="item active">-->
-<!--                <img th:src="@{/images/b22.jpg}" alt="Los Angeles">-->
-<!--            </div>-->
+    <div class="card">
 
-<!--            <div class="item">-->
-<!--                <img th:src="@{/images/b22.jpg}" alt="Chicago">-->
-<!--            </div>-->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-<!--            <div class="item">-->
-<!--                <img th:src="@{/images/b22.jpg}" alt="New York">-->
-<!--            </div>-->
-<!--        </div>-->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+<!--                <li data-target="#myCarousel" data-slide-to="0"></li>-->
+            </ol>
 
-<!--        &lt;!&ndash; Left and right controls &ndash;&gt;-->
-<!--        <a class="left carousel-control" href="#myCarousel" data-slide="prev">-->
-<!--            <span class="glyphicon glyphicon-chevron-left"></span>-->
-<!--            <span class="sr-only">Previous</span>-->
-<!--        </a>-->
-<!--        <a class="right carousel-control" href="#myCarousel" data-slide="next">-->
-<!--            <span class="glyphicon glyphicon-chevron-right"></span>-->
-<!--            <span class="sr-only">Next</span>-->
-<!--        </a>-->
-<!--    </div>-->
+            <div class="carousel-inner">
 
-<!--    <div class="banner">-->
-<!--        <div class="main-banner owl-carousel">-->
-<!--            <div class="main-banner owl-carousel owl-loaded owl-drag">-->
-<!--                <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 4182px;">-->
-<!--                    <div class="owl-item active" style="width: 1393.76px;">-->
-<!--                        <div class="item"><a href="#"><img th:src="@{/images/b22.jpg}" alt="Main Banner" class="img-responsive"></a>-->
-<!--                        </div></div>-->
-<!--                    <div class="owl-item active" style="width: 1393.76px;"><div class="item"><a href="#"><img th:src="@{/images/b1.jpg}" alt="Main Banner" class="img-responsive"></a>-->
-<!--                    </div></div>-->
-<!--                    <div class="owl-item" style="width: 1393.76px;"><div class="item"><a href="#"><img th:src="@{/images/b22.jpg}" alt="Main Banner" class="img-responsive"></a>-->
-<!--                    </div></div>-->
-<!--                </div></div>-->
-<!--                <div class="owl-nav disabled"><div class="owl-prev">prev</div><div class="owl-next">next</div></div><div class="owl-dots"><div class="owl-dot active"><span></span></div><div class="owl-dot"><span></span></div><div class="owl-dot"><span></span></div></div></div>-->
+                <div class="item active sub-hover">
+                    <img class="sub-hover" th:src="@{/images/b2.jpg}"     alt="Los Angeles"
+                         style="width:100%;">
+                    <div class="carousel-caption">
+<!--                        <h5>event 1</h5>-->
+                    </div>
+                </div>
 
-<!--        </div>-->
-<!--    </div>-->
+                <div class="item sub-hover">
+                    <img class="sub-hover" th:src="@{/images/b3.jpg}" alt="Chicago" style="width:100%;">
+                    <div class="carousel-caption">
+<!--                        <h5>event 2</h5>-->
+                    </div>
+                </div>
+
+                <div class="item sub-hover">
+                    <img class="sub-hover" th:src="@{/images/b22.jpg}" alt="New York" style="width:100%;">
+                    <div class="carousel-caption">
+<!--                        <h5>event 3</h5>-->
+                    </div>
+                </div>
+
+            </div>
+
+
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+<!--                <span class="sr-only">Previous</span>-->
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+<!--                <span class="sr-only">Next</span>-->
+            </a>
+        </div>
+    </div>
     <!-- =====  BANNER END  ===== -->
     <!-- =====  CONTAINER START  ===== -->
     <div class="container">
         <!-- =====  SUB BANNER  STRAT ===== -->
         <div class="row">
-            <div class="col-sm-3 mt_20 cms-icon ">
+            <div class="col-sm-4 mt_20 cms-icon ">
                 <div class="feature-i-left ptb_30 ">
-                    <div class="icon-right Shipping"></div>
-                    <h6>Free Shipping</h6>
-                    <p>Free dedlivery worldwide</p>
+                    <i class="fa fa-chrome icon-right fa-3x"></i>
+                    <h6>Order Online</h6>
+                    <p>25*7</p>
                 </div>
             </div>
-            <div class="col-sm-3 mt_20 cms-icon ">
+            <div class="col-sm-4 mt_20 cms-icon ">
                 <div class="feature-i-left ptb_30 ">
-                    <div class="icon-right Order"></div>
-                    <h6>Order Onlivne</h6>
-                    <p>Hours : 8am - 11pm</p>
-                </div>
-            </div>
-            <div class="col-sm-3 mt_20 cms-icon ">
-                <div class="feature-i-left ptb_30 ">
-                    <div class="icon-right Save"></div>
+                    <i class="fa fa-shopping-cart icon-right fa-3x"></i>
                     <h6>Shop And Save</h6>
                     <p>For All Spices & Herbs</p>
                 </div>
             </div>
-            <div class="col-sm-3 mt_20 cms-icon ">
+            <div class="col-sm-4 mt_20 cms-icon ">
                 <div class="feature-i-left ptb_30 ">
-                    <div class="icon-right Safe"></div>
+                    <i class="fa fa-shield icon-right fa-3x"></i>
                     <h6>Safe Shoping</h6>
                     <p>Ensure genuine 100%</p>
                 </div>
@@ -311,632 +291,24 @@
                         <h2 class="main_title">Featured Products</h2>
                     </div>
                     <ul class="nav text-right">
-                        <li class="active"> <a href="#nArrivals" data-toggle="tab">New Arrivals</a> </li>
-                        <li><a href="#Bestsellers" data-toggle="tab">Bestsellers</a> </li>
                         <li><a href="#Featured" data-toggle="tab">Featured</a> </li>
                     </ul>
-<!--                    <span class="border border-dark"><span class="container" th:each="threeproducts : ${products}"><div class="row" style="width:400px">-->
-<!--                        <div class="col-sm-4 card">-->
-<!--                        <img class="card-img-top" th:src="@{/images/mylogo.png}" alt="Card image cap">-->
-<!--                        <span class="card-body">-->
-<!--                            <h4 class="card-title" th:text = "${threeproducts.title}">John Doe</h4>-->
-<!--                            <p class="card-text" th:text = "${threeproducts.description}">Some example text.</p>-->
-<!--                            <p class="card-text" th:text = "${threeproducts.unitPrice}">Some example text.</p>-->
-<!--                        </span></div>-->
-<!--                    </div></span></span>-->
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-4">
-                                <div class="card">1</div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">1</div>
-                            </div>
-                            <div class="col-4">
-                                <div class="card">1</div>
-                            </div>
-                        </div>
-                    </div>
+<!--                    </div>-->
 
                     <div class="container-fluid" th:each="threeproducts : ${products}">
                         <div class="row justify-content-around mb-3">
                             <div class="col-lg-4">
+                                <a href="" th:href="@{/login}">
                                 <div class="card" style="width:400px">
-                                    <img class="card-img-top" th:src="@{/images/mylogo.png}" alt="Card image cap">
+                                    <img class="card-img-top" th:src="@{${'/images/s'+threeproducts.productId+'.jpg'}}" alt="Card image cap">
                                     <div class="card-body">
                                         <h4 class="card-title" th:text = "${threeproducts.title}">John Doe</h4>
                                         <p class="card-text" th:text = "${threeproducts.description}">Some example text.</p>
                                         <p class="card-text" th:text = "${threeproducts.unitPrice}">Some example text.</p>
                                     </div>
-                                </div>
+                                </div></a>
                             </div></div></div>
-                    <div class="container-fluid" >
-                    <div class="product-grid">
-                        <span class="item" >
-                            <span class="product-thumb" th:each="threeproducts : ${products}">
-                                <img class="card-img-top" th:src="@{/images/mylogo.png}" alt="Card image cap">
-                                <div class="caption product-detail">
-                                    <h4 class="card-text" th:text = "${threeproducts.title}">John Doe</h4>
-                                    <p class="card-text" th:text = "${threeproducts.description}">Some example text.</p>
-                                    <p class="card-text" th:text = "${threeproducts.unitPrice}">Some example text.</p>
-                                </div>
-                            </span>
-                        </span>
-                    </div></div>
 
-
-                    <div class="tab-content clearfix box">
-<!--                        <div class="tab-pane active" id="nArrivals">-->
-<!--                            <div class="nArrivals owl-carousel">-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product9.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product9-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product1.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product1-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product3.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product3-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product5.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product5-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb  mb_30">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product7.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product7-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                                <div class="product-grid">-->
-<!--                                    <div class="item">-->
-<!--                                        <div class="product-thumb  mb_30">-->
-<!--                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img-->
-<!--                                                    data-name="product_image" src="images/product/product9.jpg" alt="Item" title="Item"-->
-<!--                                                    class="img-responsive"> <img src="images/product/product9-1.jpg" alt="Item" title="Item"-->
-<!--                                                                                 class="img-responsive"> </a>-->
-<!--                                                <div class="button-group text-center">-->
-<!--                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>-->
-<!--                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>-->
-<!--                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>-->
-<!--                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>-->
-<!--                                                </div>-->
-<!--                                            </div>-->
-<!--                                            <div class="caption product-detail text-center">-->
-<!--                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i-->
-<!--                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span-->
-<!--                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                                        class="fa fa-star fa-stack-x"></i></span> </div>-->
-<!--                                                <h6 data-name="product_name" class="product-name"><a href="#"-->
-<!--                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>-->
-<!--                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>-->
-<!--                          </span>-->
-<!--                                            </div>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-                        <div class="tab-pane" id="Bestsellers">
-                            <div class="Bestsellers owl-carousel">
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product1.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product1-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product3.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product3-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product5.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product5-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product6.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product6-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product8.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product8-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product10.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product10-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane" id="Featured">
-                            <div class="Featured owl-carousel">
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" th:src="@{/images/lisa_login.jpg}" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product2-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product4.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product4-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product6.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product6-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product8.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product8-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product10.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product10-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-grid">
-                                    <div class="item">
-                                        <div class="product-thumb  mb_30">
-                                            <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                    data-name="product_image" src="images/product/product2.jpg" alt="Item" title="Item"
-                                                    class="img-responsive"> <img src="images/product/product2-1.jpg" alt="Item" title="Item"
-                                                                                 class="img-responsive"> </a>
-                                                <div class="button-group text-center">
-                                                    <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                    <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                    <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                    <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                                </div>
-                                            </div>
-                                            <div class="caption product-detail text-center">
-                                                <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                        class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                        class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                        class="fa fa-star fa-stack-x"></i></span> </div>
-                                                <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                     title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                                <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                          </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <!-- =====  PRODUCT TAB  END ===== -->
             </div>
@@ -950,168 +322,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 mtb_10">
-                <!-- =====  PRODUCT TAB  ===== -->
-                <div class="mt_60">
-                    <div class="heading-part mb_10 ">
-                        <h2 class="main_title">Deals of the Week</h2>
-                    </div>
-                    <div class="latest_pro box">
-                        <div class="latest owl-carousel">
-                            <div class="product-grid">
-                                <div class="item">
-                                    <div class="product-thumb">
-                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                data-name="product_image" src="images/product/product2.jpg" alt="Item" title="Item"
-                                                class="img-responsive"> <img src="images/product/product2-1.jpg" alt="Item" title="Item"
-                                                                             class="img-responsive"> </a>
-                                            <div class="button-group text-center">
-                                                <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                            </div>
-                                        </div>
-                                        <div class="caption product-detail text-center">
-                                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-x"></i></span> </div>
-                                            <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                 title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                            <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-grid">
-                                <div class="item">
-                                    <div class="product-thumb">
-                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                data-name="product_image" src="images/product/product4.jpg" alt="Item" title="Item"
-                                                class="img-responsive"> <img src="images/product/product4-1.jpg" alt="Item" title="Item"
-                                                                             class="img-responsive"> </a>
-                                            <div class="button-group text-center">
-                                                <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                            </div>
-                                        </div>
-                                        <div class="caption product-detail text-center">
-                                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-x"></i></span> </div>
-                                            <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                 title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                            <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-grid">
-                                <div class="item">
-                                    <div class="product-thumb">
-                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                                data-name="product_image" src="images/product/product6.jpg" alt="Item" title="Item"
-                                                class="img-responsive"> <img src="images/product/product6-1.jpg" alt="Item" title="Item"
-                                                                             class="img-responsive"> </a>
-                                            <div class="button-group text-center">
-                                                <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                                <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                                <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                                <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                            </div>
-                                        </div>
-                                        <div class="caption product-detail text-center">
-                                            <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                    class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                    class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                    class="fa fa-star fa-stack-x"></i></span> </div>
-                                            <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                                 title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                            <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                        </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="product-grid">
-                                <div class="item">
-                                    <div class="product-thumb">
-                                        <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="images/product/product8.jpg" alt="Item" title="Item"
-                                                                                                                        class="img-responsive"> <img src="images/product/product8-1.jpg" alt="Item" title="Item">
-                                        </a>
-                                        </div>
-                                    </div>
-                                    <div class="caption product-detail text-center">
-                                        <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-x"></i></span> </div>
-                                        <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                             title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                        <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="product-grid">
-                            <div class="item">
-                                <div class="product-thumb">
-                                    <div class="image product-imageblock"> <a href="product_detail_page.html"> <img
-                                            data-name="product_image" src="images/product/product2.jpg" alt="Item" title="Item"
-                                            class="img-responsive"> <img src="images/product/product2-1.jpg" alt="Item" title="Item"
-                                                                         class="img-responsive"> </a>
-                                        <div class="button-group text-center">
-                                            <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
-                                            <div class="quickview"><a href="#"><span>Quick View</span></a></div>
-                                            <div class="compare"><a href="#"><span>Compare</span></a></div>
-                                            <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
-                                        </div>
-                                    </div>
-                                    <div class="caption product-detail text-center">
-                                        <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-1x"></i></span> <span class="fa fa-stack"><i
-                                                class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span> <span
-                                                class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i
-                                                class="fa fa-star fa-stack-x"></i></span> </div>
-                                        <h6 data-name="product_name" class="product-name"><a href="#"
-                                                                                             title="Casual shoe With Ruffle Hem">A Nike Product</a></h6>
-                                        <span class="price"><span class="amount"><span class="currencySymbol">₹</span>70,000.00</span>
-                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-12 mtb_10">
         </div>
     </div>
 </div>
@@ -1120,27 +330,6 @@
 <!-- =====  FOOTER START  ===== -->
 <div class="footer pt_60">
     <div class="container">
-        <div class="newsletters mt_30 mb_50">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="news-head pull-left">
-                        <h2>Follow Our Updates !</h2>
-                        <div class="new-desc">Be the First to know about our Fresh Arrivals and much more!</div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="news-form pull-right">
-                        <form onsubmit="return validatemail();" method="post">
-                            <div class="form-group required">
-                                <input name="email" id="email" placeholder="Enter Your Email" class="form-control input-lg"
-                                       required="" type="email">
-                                <button type="submit" class="btn btn-default btn-lg">Subscribe</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="row">
             <div class="col-md-3 footer-block">
                 <h6 class="footer-title ptb_20">Information</h6>
@@ -1162,16 +351,7 @@
                     <li><a href="#">Order History</a></li>
                 </ul>
             </div>
-            <div class="col-md-3 footer-block">
-                <h6 class="footer-title ptb_20">Extras</h6>
-                <ul>
-                    <li><a href="#">Brands</a></li>
-                    <li><a href="#">Gift Certificates</a></li>
-                    <li><a href="#">Affiliates</a></li>
-                    <li><a href="#">Specials</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                </ul>
-            </div>
+            <div class="col-md-3 footer-block"></div>
             <div class="col-md-3 footer-block">
                 <h6 class="footer-title ptb_20">Contacts</h6>
                 <ul>
@@ -1188,43 +368,31 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <div class="social_icon">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                        </ul>
-                    </div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="copyright-part text-center">@2021 All Rights Reserved </div>
+                    <div class="copyright-part text-center">@2022 All Rights Reserved</div>
                 </div>
                 <div class="col-sm-4">
-                    <div class="payment-icon text-right">
-                        <ul>
-                            <li><i class="fa fa-cc-paypal "></i></li>
-                            <li><i class="fa fa-cc-visa"></i></li>
-                            <li><i class="fa fa-cc-discover"></i></li>
-                            <li><i class="fa fa-cc-mastercard"></i></li>
-                            <li><i class="fa fa-cc-amex"></i></li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>
+
     </div>
+    <!-- =====  FOOTER END  ===== -->
+    <a id="scrollup"><i class="fa-solid fa-up"></i></a>
 </div>
 <!-- =====  FOOTER END  ===== -->
 </div>
-<a id="scrollup"></a>
+<!--<a id="scrollup"></a>-->
 <script th:src="@{/script/jQuery_v3.1.1.min.js}"></script>
 <script th:src="@{/script/owl.carousel.min.js}"></script>
 <script th:src="@{/script/bootstrap.min.js}"></script>
 <script th:src="@{/script/jquery.magnific-popup.js}"></script>
 <script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
 <script th:src="@{/script/custom.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

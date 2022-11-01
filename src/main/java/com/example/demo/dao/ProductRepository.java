@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
+import com.example.demo.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -60,6 +61,12 @@ public class ProductRepository {
 	public List<Product> getAll() {
 		String sql_query = "SELECT * FROM Product";
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
+	}
+
+	public List<Product> sortbyINV(){
+		String sql_query = "SELECT * FROM Product order by (smallInStock+mediumInStock+largeInStock) limit 3;";
+		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
+
 	}
 
 	public Product getProductById(int productId) {

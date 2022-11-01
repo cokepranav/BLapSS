@@ -35,6 +35,8 @@ public class CustomerRepository {
         }
     }
 
+
+
     public void addCustomer(String firstName,String lastName,String emailAddress,String userName,String password,String role){
         password=bCryptPasswordEncoder.encode(password);
         String sql_query = "INSERT INTO Customer (firstName, lastName, emailAddress, userName, password, role) VALUES(?, ?, ?, ?, ?, ?)";
