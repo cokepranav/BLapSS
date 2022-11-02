@@ -76,22 +76,10 @@ public class Customercontroller {
         return "redirect:/index"; //You can redirect wherever you want, but generally it's a good practice to show login screen again.
     }
 
-//    @GetMapping("/")
-//    public String welcome() {
-//        System.out.println("%%%%%");
-//        return "index";
-//    }
-
     @RequestMapping("/logout-success")
     public String logo(){
         return "logout";
     }
-
-//    @GetMapping("/")
-//    public String welcoe() {
-//        System.out.println("%%%%%");
-//        return "logout";
-//    }
 
 
 }

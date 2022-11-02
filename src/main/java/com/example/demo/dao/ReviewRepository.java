@@ -16,6 +16,8 @@ public class ReviewRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
+
     public void createReview(Review review) {
         String sql_query = "INSERT INTO Review (customerId, productId, description, rating) VALUES (?, ?, ?, ?)";
         jdbcTemplate.update(sql_query,

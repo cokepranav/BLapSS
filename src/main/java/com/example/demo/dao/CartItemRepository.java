@@ -4,6 +4,7 @@ import com.example.demo.models.CartItem;
 import com.example.demo.models.Customer;
 import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -36,6 +37,16 @@ public class CartItemRepository {
                 size,
                 product.getUnitPrice()
         );
+    }
+
+    public CartItem gethiscart(int customerId,int productId,String size){
+        try{
+        String sql_query="select * from CartItem where customerId=? and productId=? and size=?";
+        return jdbcTemplate.queryForObject(sql_query,new BeanPropertyRowMapper<>(CartItem.class), new Object[] { customerId,productId,size });
+    } catch (EmptyResultDataAccessException e) {
+        return null;
+    }
+
     }
 
     public List<Product> getCartitemasProduct(int id){

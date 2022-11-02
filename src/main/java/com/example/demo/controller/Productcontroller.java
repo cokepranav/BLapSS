@@ -48,11 +48,8 @@ public class Productcontroller {
 
     @RequestMapping(path="/SaveProduct",method={RequestMethod.POST,RequestMethod.GET})
     public String setProduct(@ModelAttribute Product product){
-//        String ef=request.getParameter("title");
-//        System.out.println(ef);
         if(product.getProductId()!=0){
         productRepository.createProduct(product);}
-//        model.addAttribute("newProduct",product);
         return "Productform";
     }
 
@@ -72,14 +69,7 @@ public class Productcontroller {
 //    @RequestMapping()
     public String getALlpers(Model model){
         model.addAttribute("products", productRepository.getAll());
-//        model.addAttribute("review",)
-
-//        ModelAndView modelAndView=new ModelAndView();
-//        modelAndView.setViewName("Product");
-//        modelAndView.addObject("products",p);
-//        System.out.println(p);
-//        return modelAndView;
-        return "Product";
+        return "AllProducts";
     }
     @GetMapping("/Product/{id}")
     public String getSingleProduct(@PathVariable("id")int id,Model model){
@@ -110,15 +100,27 @@ public class Productcontroller {
 
     @PostMapping("/addToCart/{productId}")
     public String addToCart(@RequestParam Map<String, String> body,@PathVariable("productId") int productId, Model model) {
+
         model.addAttribute("naam",securityServices.findLoggedInUsername());
         model.addAttribute("user",securityServices.findLoggedInCustomer());
         System.out.println("CART CONTROLLER CALLED");
         Customer customer = customerRepository.getCustomerbyUsername(securityServices.findLoggedInUsername());
         System.out.println(customer.toString());
         String size = body.get("size");
-        System.out.println(size);
+        if(cartItemRepository.gethiscart(customer.getCustomerId(), productId,size)!=null){
+            model.addAttribute("error_msg","Already in your cart!!");
+            return "redirect:/Product/{productId}?q=Already+in+your+Cart";
+        }
         cartItemRepository.addToCart(customer, productId, size);
         return "redirect:/Products";
+    }
+
+    @PostMapping("/Product/{id}")
+    public String giveReview(@RequestParam Map<String, String> newreview, @PathVariable("id") int productId,Model model){
+        int i=Integer.parseInt(newreview.get("rating"));
+        reviewRepository.createReview(new Review(securityServices.findLoggedInCustomer().getCustomerId(),productId,newreview.get("description"),i));
+//        model.addAttribute("user",securityServices.findLoggedInCustomer());
+        return "redirect:/Product/{id}";
     }
 
 }

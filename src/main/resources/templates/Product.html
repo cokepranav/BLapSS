@@ -45,9 +45,18 @@
               <li class="account">
                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
 <!--                  <span class="glyphicon glyphicon-log-out"></span>-->
+                  <span th:case="${true}" >
+                      <span th:switch="${user.role}">
+                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-power-off"></i> Admin</a></span>
+                  </span></span>
+              </li>
+              <li class="account">
+                <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+<!--                  <span class="glyphicon glyphicon-log-out"></span>-->
                   <span th:case="${true}"><a href="#" th:href="@{/logou}"><i class="fa fa-power-off"></i> Logout</a>
                   </span></span>
               </li>
+
 
             </ul>
           </div>
@@ -236,7 +245,6 @@
             <div id="product">
               <form th:action="@{/addToCart/{productId}(productId=${products.productId})}" method="post">
 <!--                <a href="" th:href="@{/Product/{id}(id=${threeproducts.productId})}">-->
-
               <div class="form-group">
                 <div class="row">
                   <div class="Sort-by col-md-6">
@@ -247,8 +255,9 @@
                   </div>
                 </div>
               </div>
+                <p th:text="${param.q}" style="font-size:125%">ERROR</p>
+                <p th:text = "${error_msg}" />
               <div class="form-group">
-
               <div class="button-group mt_30">
                 <div class="add-to-cart">
                   <button type="submit"><i type="submit" class="fa fa-shopping-cart fa-2x"></i></button>
@@ -266,6 +275,7 @@
                   <a href="#1c" data-toggle="tab">Overview</a>
                 </li>
                 <li><a href="#2c" data-toggle="tab">Reviews</a></li>
+                <li><a href="#3c" data-toggle="tab">Give Reviews</a></li>
               </ul>
               <div class="tab-content ">
                 <div class="tab-pane active pt_20" id="1c">
@@ -273,7 +283,7 @@
                     lorem ipsum
                   </p>
                 </div>
-                <div class="tab-pane" id="2c">
+                <div class="tab-pane pt_20" id="2c">
                   <div th:each="rev:${review}">
                   <ul class="list-unstyled product_info mtb_20">
                     <li>
@@ -291,7 +301,45 @@
                   </ul>
                   </div>
                 </div>
+                <div class="tab-pane" id="3c">
+                  <form class="form-horizontal" th:action = "@{/Product/{id}(id=${products.productId})}" method="post">
+                    <div id="review"></div>
+                    <h4 class="mt_20 mb_30">Write a review</h4>
+                    <div class="form-group required">
+                      <div class="col-sm-12">
+                        <label class="control-label" for="input-review">Your Review</label>
+                        <textarea name="description" rows="5" id="input-review" class="form-control"></textarea>
+                        <div class="help-block">
+                          <span class="text-danger">Note:</span> HTML is not
+                          translated!
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group required">
+                      <div class="col-md-6">
+                        <label class="control-label">Rating&nbsp;&nbsp;</label>
+                        <div class="rates">
+                          <span>Bad</span>
+                          <input name="rating" value="1" type="radio" />
+                          <input name="rating" value="2" type="radio" />
+                          <input name="rating" value="3" type="radio" />
+                          <input name="rating" value="4" type="radio" />
+                          <input name="rating" value="5" type="radio" />
+                          <span>Good</span>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="buttons pull-right">
+                          <button type="submit" class="btn btn-md btn-link">
+                            Continue
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
               </div>
+
             </div>
           </div>
         </div>

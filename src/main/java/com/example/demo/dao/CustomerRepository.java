@@ -23,6 +23,11 @@ public class CustomerRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    public Customer getrole(String userName){
+        String sqlst = "SELECT * FROM customer WHERE userName = ?";
+        return jdbcTemplate.queryForObject(sqlst, BeanPropertyRowMapper.newInstance(Customer.class), new Object[] { userName });
+    }
+
     public String getFullName() {
         return this.customer.getFirstName()+this.customer.getLastName();
     }

@@ -16,10 +16,6 @@ public class Customer {
 
 	private String role;
 
-	public String getCustomerRole(){return role;}
-
-	public void setCustomerRole(String role){this.role=role;}
-
 	public int getCustomerId() {
 		return customerId;
 	}
@@ -68,10 +64,14 @@ public class Customer {
 		this.password = password;
 	}
 
+	public String getRole(){return role;}
+
+	public void setRole(String role){this.role=role;}
+
 	@Override
 	public String toString() {
 		return "Customer [customerId=" + customerId + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", emailAddress=" + emailAddress + ", userName=" + userName + ", password=" + password + "]";
+				+ ", emailAddress=" + emailAddress + ", userName=" + userName + ", password=" + password + ",role="+role+",]";
 	}
 
 

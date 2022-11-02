@@ -10,6 +10,15 @@ public class Review {
 
 	private int rating;
 
+	public Review(){}
+
+	public Review(int customerId, int productId, String description, int rating) {
+		this.customerId = customerId;
+		this.productId = productId;
+		this.description = description;
+		this.rating = rating;
+	}
+
 	public int getCustomerId() {
 		return customerId;
 	}

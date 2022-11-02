@@ -45,9 +45,18 @@
                             <li class="account">
                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
 <!--                  <span class="glyphicon glyphicon-log-out"></span>-->
+                  <span th:case="${true}" >
+                      <span th:switch="${user.role}">
+                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-power-off"></i> Admin</a></span>
+                  </span></span>
+                            </li>
+                            <li class="account">
+                <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+<!--                  <span class="glyphicon glyphicon-log-out"></span>-->
                   <span th:case="${true}"><a href="#" th:href="@{/logou}"><i class="fa fa-power-off"></i> Logout</a>
                   </span></span>
                             </li>
+
                         </ul>
                     </div>
                 </div>
