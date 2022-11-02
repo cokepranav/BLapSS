@@ -1,6 +1,7 @@
 package com.example.demo.dao;
 
 import com.example.demo.models.Cart;
+import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -45,4 +46,6 @@ public class CartRepository {
         String sql = "SELECT * FROM Cart WHERE cartID=?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Cart.class), new Object[]{cartId});
     }
+
+
 }

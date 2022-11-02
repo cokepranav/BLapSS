@@ -69,6 +69,8 @@ public class ProductRepository {
 
 	}
 
+
+
 	public Product getProductById(int productId) {
 		try {
 			String sql_query = "SELECT * FROM Product WHERE productId = ?";

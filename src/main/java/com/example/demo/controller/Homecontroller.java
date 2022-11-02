@@ -20,6 +20,6 @@ public class Homecontroller {
 ////        return "template/home";
 //    }
     @GetMapping({"/","/index","/home"})
-    public String index(Model model){model.addAttribute("naam",securityservices.findLoggedInUsername());model.addAttribute("products",productRepository.sortbyINV());return "index";
+    public String index(Model model){model.addAttribute("user",securityservices.findLoggedInCustomer());model.addAttribute("naam",securityservices.findLoggedInUsername());model.addAttribute("products",productRepository.sortbyINV());return "index";
     }
 }

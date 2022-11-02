@@ -31,6 +31,7 @@ public class Customercontroller {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
+        model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("naam",securityservices.findLoggedInUsername());
         model.addAttribute("customer", new Customer());
         model.addAttribute("error_msg", "");
@@ -44,8 +45,10 @@ public class Customercontroller {
 
     @RequestMapping(path="/signup",method=RequestMethod.POST)
     public String makeit(Customer customer, Model model){
+        model.addAttribute("user",securityservices.findLoggedInCustomer());
         if(customerRepository.getCustomerbyUsername(customer.getUserName()) != null)
         {
+            model.addAttribute("user",securityservices.findLoggedInCustomer());
             model.addAttribute("naam",securityservices.findLoggedInUsername());
             model.addAttribute("customer", new Customer());
             model.addAttribute("error_msg", "Username already exists!!");
@@ -57,12 +60,14 @@ public class Customercontroller {
 
     @GetMapping("/login")
     public String logi(Model model){
+        model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("naam",securityservices.findLoggedInUsername());
         return "login";
     }
 
     @RequestMapping(value="/logou", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response,Model model) {
+        model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("name",securityservices.findLoggedInUsername());
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null){

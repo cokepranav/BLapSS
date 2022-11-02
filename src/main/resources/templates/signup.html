@@ -93,71 +93,6 @@
           </div>
           <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
                                                                                                           th:src="@{/images/mylogo.png}"></a></div>
-          <div class="col-xs-6 col-sm-4 shopcart">
-            <div id="cart" class="btn-group btn-block mtb_40">
-              <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse"
-                      aria-expanded="true"><span id="shippingcart">Shopping cart</span><span id="cart-total">items
-                    (0)</span> </button>
-            </div>
-            <div id="cart-dropdown" class="cart-menu collapse">
-              <ul>
-                <li>
-                  <table class="table table-striped">
-                    <tbody>
-                    <tr>
-                      <td class="text-center"><a href="#"><img src="images/product/70x84.jpg" alt="Item"
-                                                               title="Item"></a></td>
-                      <td class="text-left product-name"><a href="#">Nike Home</a> <span
-                              class="text-left price">₹20,000</span>
-                        <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                      </td>
-                      <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                    </tr>
-                    <tr>
-                      <td class="text-center"><a href="#"><img src="images/product/70x84.jpg" alt="Item"
-                                                               title="Item"></a></td>
-                      <td class="text-left product-name"><a href="#">Nike Away</a> <span
-                              class="text-left price">₹20,000</span>
-                        <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-                      </td>
-                      <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li>
-                  <table class="table">
-                    <tbody>
-                    <tr>
-                      <td class="text-right"><strong>Sub-Total</strong></td>
-                      <td class="text-right">₹40.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Eco Tax (-2.00)</strong></td>
-                      <td class="text-right">₹2.00</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>VAT (20%)</strong></td>
-                      <td class="text-right">₹20,000</td>
-                    </tr>
-                    <tr>
-                      <td class="text-right"><strong>Total</strong></td>
-                      <td class="text-right">₹62.00</td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </li>
-                <li>
-                  <form action="cart_page.html">
-                    <input class="btn pull-left mt_10" value="View cart" type="submit">
-                  </form>
-                  <form action="checkout_page.html">
-                    <input class="btn pull-right mt_10" value="Checkout" type="submit">
-                  </form>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
         <nav class="navbar">
           <p>menu</p>
@@ -169,7 +104,10 @@
               <li> <a href="category_page.html">Shop</a></li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
                 <ul class="dropdown-menu">
-                  <li> <a href="cart_page.html">Cart</a></li>
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
+                  </div>
                   <li> <a href="checkout_page.html">Checkout</a></li>
                   <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>

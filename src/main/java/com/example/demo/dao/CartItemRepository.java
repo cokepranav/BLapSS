@@ -38,4 +38,9 @@ public class CartItemRepository {
         );
     }
 
+    public List<Product> getCartitemasProduct(int id){
+        String sql_query="select productId,customerId,title,imageLink,size as description,unitPrice,smallInStock,mediumInStock,largeInStock from cartitem natural join product where customerId=?";
+        return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { id });
+    }
+
 }

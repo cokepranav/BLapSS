@@ -84,6 +84,8 @@ public class Productcontroller {
     @GetMapping("/Product/{id}")
     public String getSingleProduct(@PathVariable("id")int id,Model model){
 //        Product p=productRepository.getProductById(id);
+        model.addAttribute("naam",securityServices.findLoggedInUsername());
+        model.addAttribute("user",securityServices.findLoggedInCustomer());
         Product product = productRepository.getProductById(id);
         model.addAttribute("products", product);
         List<String> availableSizes = new ArrayList<String>();
@@ -108,6 +110,8 @@ public class Productcontroller {
 
     @PostMapping("/addToCart/{productId}")
     public String addToCart(@RequestParam Map<String, String> body,@PathVariable("productId") int productId, Model model) {
+        model.addAttribute("naam",securityServices.findLoggedInUsername());
+        model.addAttribute("user",securityServices.findLoggedInCustomer());
         System.out.println("CART CONTROLLER CALLED");
         Customer customer = customerRepository.getCustomerbyUsername(securityServices.findLoggedInUsername());
         System.out.println(customer.toString());
