@@ -2678,20 +2678,48 @@ blockquote {
             display: block;
           }
 
-          .card {
+          .cards1 {
+                       margin: 0 auto;
+             			 max-width: 1500px;
+              		display: grid;
+             			 grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 
-            box-shadow: 1px 1px 1px 1px #6d3862;
-            transition: 0.3s;
-            padding:30px;
-            border-color:#8C477E;
-            border-width: 8px;
-            border-color: black;
-          }
+              		gap: 10px;
+             			 font-family: sans-serif;
+              		padding-top: 10px;
+              		justify-content:center;
+                    }
+             .card1 {
+                      box-shadow: 1px 1px 1px 1px #6d3862;
+                      transition: 0.3s;
+                      padding:3px;
+                      border-color:#8C477E;
+                      border-width: 8px;
+                     width:250px;
+                     display:inline-block;
+                     position: relative;
+                    }
 
 
-          .card:hover {
-            box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
-          }
+                    .card1:hover {
+                      box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+                    }
+              .card {
+
+                         box-shadow: 1px 1px 1px 1px #6d3862;
+                         transition: 0.3s;
+                         padding:30px;
+                         border-color:#8C477E;
+                         border-width: 8px;
+                         border-color: black;
+                       }
+
+
+                       .card:hover {
+                         box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2);
+                       }
+
+
 
 
           .container {

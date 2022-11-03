@@ -7,9 +7,7 @@ public class Review {
 	private int productId;
 
 	private String description;
-
 	private int rating;
-
 	public Review(){}
 
 	public Review(int customerId, int productId, String description, int rating) {

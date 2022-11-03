@@ -63,12 +63,17 @@ public class ProductRepository {
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
 	}
 
-	public List<Product> sortbyINV(){
-		String sql_query = "SELECT * FROM Product order by (smallInStock+mediumInStock+largeInStock) limit 3;";
+	public List<Product> sortbyINVS(){
+		String sql_query = "SELECT * FROM Product where categoryId=1 order by (smallInStock+mediumInStock+largeInStock) limit 4";
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
 
 	}
 
+	public List<Product> sortbyINVP(){
+		String sql_query = "SELECT * FROM Product where categoryId=2 order by (smallInStock+mediumInStock+largeInStock) limit 4";
+		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
+
+	}
 
 
 	public Product getProductById(int productId) {
@@ -81,4 +86,35 @@ public class ProductRepository {
 		}
 	}
 
+	public void intoCart(int productId,String size){
+
+		if(size.equals("S")){
+			String sql_query="Update product set smallInStock=smallInStock-1 where productId=?";
+			jdbcTemplate.update(sql_query,productId);
+		}
+		if(size.equals("M")){
+			String sql_query="Update product set mediumInStock=mediumInStock-1 where productId=?";
+			jdbcTemplate.update(sql_query,productId);
+		}
+		if(size.equals("L")){
+			String sql_query="Update product set largeInStock=largeInStock-1 where productId=?";
+			jdbcTemplate.update(sql_query,productId);
+		}
+	}
+
+	public void intoCartUpdate(int productId,String size,int quantity){
+
+		if(size.equals("S")){
+			String sql_query="Update product set smallInStock=? where productId=?";
+			jdbcTemplate.update(sql_query,quantity,productId);
+		}
+		if(size.equals("M")){
+			String sql_query="Update product set mediumInStock=? where productId=?";
+			jdbcTemplate.update(sql_query,quantity,productId);
+		}
+		if(size.equals("L")){
+			String sql_query="Update product set largeInStock=? where productId=?";
+			jdbcTemplate.update(sql_query,quantity,productId);
+		}
+	}
 }

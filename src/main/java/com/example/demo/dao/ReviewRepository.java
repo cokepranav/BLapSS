@@ -52,23 +52,16 @@ public class ReviewRepository {
     }
 
     public List<Review> getAvgProductReview(int id){
-        try{
         String sql_query = "SELECT avg(rating) as rating FROM Review where productId=?";
-        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });}
-        catch (EmptyResultDataAccessException e) {
-            // TODO: handle exception
-            return null;
-        }
+        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });
+
     }
 
     public List<Review> getProductReview(int id){
-        try{
+
             String sql_query = "SELECT * FROM Review where productId=?";
-            return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });}
-        catch (EmptyResultDataAccessException e) {
-            // TODO: handle exception
-            return null;
-        }
+            return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });
+
     }
 
 }

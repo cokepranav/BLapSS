@@ -87,8 +87,13 @@ public class Productcontroller {
         List<Review> r2=reviewRepository.getAvgProductReview(id);
         Customer d=customerRepository.getCustomerbyID(id);
         model.addAttribute("customer",d);
-        model.addAttribute("review",r);
-        model.addAttribute("reviewAvg",r2);
+
+        if(r2.isEmpty()){model.addAttribute("reviewAvg","not yet given");}
+        else{model.addAttribute("reviewAvg",r2);}
+        if(r.isEmpty()){
+            model.addAttribute("no","No reviews yet");
+        }
+        else{model.addAttribute("review",r);}
 //        System.out.println(p);
         return "Product";
     }
@@ -104,13 +109,16 @@ public class Productcontroller {
         model.addAttribute("naam",securityServices.findLoggedInUsername());
         model.addAttribute("user",securityServices.findLoggedInCustomer());
         System.out.println("CART CONTROLLER CALLED");
+        Product product=productRepository.getProductById(productId);
         Customer customer = customerRepository.getCustomerbyUsername(securityServices.findLoggedInUsername());
         System.out.println(customer.toString());
         String size = body.get("size");
+        System.out.println(size);
         if(cartItemRepository.gethiscart(customer.getCustomerId(), productId,size)!=null){
             model.addAttribute("error_msg","Already in your cart!!");
             return "redirect:/Product/{productId}?q=Already+in+your+Cart";
         }
+        productRepository.intoCart(productId,size);
         cartItemRepository.addToCart(customer, productId, size);
         return "redirect:/Products";
     }

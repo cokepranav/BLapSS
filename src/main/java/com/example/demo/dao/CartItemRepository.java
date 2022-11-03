@@ -50,8 +50,18 @@ public class CartItemRepository {
     }
 
     public List<Product> getCartitemasProduct(int id){
-        String sql_query="select productId,customerId,title,imageLink,size as description,unitPrice,smallInStock,mediumInStock,largeInStock from cartitem natural join product where customerId=?";
+        String sql_query="select productId,customerId as categoryId,title,imageLink,size as description,unitPrice,quantity as smallInStock,mediumInStock,largeInStock from cartitem natural join product where customerId=?";
         return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { id });
+    }
+
+    public void updateCartItem(int customerId,int productId,int quantity,String size){
+        String sql_query="update cartitem set quantity=? where customerId=? and productId=? and size=?";
+        jdbcTemplate.update(sql_query,quantity,customerId,productId,size);
+    }
+
+    public void  deleteCartItem(int customerId,int productId,String size){
+        String sql_query="delete from cartitem where customerId=? and productId=? and size=?";
+        jdbcTemplate.update(sql_query,customerId,productId,size);
     }
 
 }

@@ -38,7 +38,7 @@
               <li class="account">
                 <!--                <a th:href="@{/login}">My Account</a>-->
                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                  <a th:href="@{/login}" th:case="${false}"><i class="fa fa-power-off"></i>     Login</a>
+                  <a th:href="@{/register}" th:case="${false}"><i class="fa fa-power-off"></i>     Sign up</a>
                   <span th:case="${true}"><span th:text=" 'Hola!! ' + ${user.userName}">Hola!! User</span></span>
                   <span th:case="*">LOL!!</span>
                 </span></li>
@@ -47,7 +47,7 @@
 <!--                  <span class="glyphicon glyphicon-log-out"></span>-->
                   <span th:case="${true}" >
                       <span th:switch="${user.role}">
-                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-power-off"></i> Admin</a></span>
+                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
                   </span></span>
               </li>
               <li class="account">
@@ -150,6 +150,10 @@
       </div>
     </div>
   </header>
+<!--  <form th:action = "@{/update_cart}" method = "post">-->
+<!--    <input type = "text" name = "test">-->
+<!--    <button type="submit">Submit</button>-->
+<!--  </form>-->
   <!-- =====  HEADER END  ===== -->
   <!-- =====  CONTAINER START  ===== -->
   <div class="container">
@@ -182,7 +186,7 @@
         </div>
       </div>
       <div class="col-sm-8 col-lg-9 mtb_20">
-        <form enctype="multipart/form-data" method="post" action="#">
+<!--        <form enctype="multipart/form-data" method="post" action="#">-->
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
@@ -196,9 +200,15 @@
               </tr>
               </thead>
               <tbody>
+<!--              <p  style="font-size:125%"></p>-->
+<!--<div th:text=""></div>-->
+              <div th:if="${param.q}" class="alert alert-danger" role="alert" th:text="${param.q}">
+                <p>ERROR!!</p>
+              </div>
               <tr th:each="cartItem : ${cartItems}">
                 <td class="text-center">
-                  <a href="#"><img th:src="@{${'/images/'+cartItem  .productId+'.jpg'}}" alt="Item" title="Item" /></a>
+                  <img th:src="@{${'/images/'+cartItem  .productId+'.jpg'}}"
+                                   style="height:20%; max-width: 50%" alt="Item" title="Item" />
                 </td>
                 <td class="text-left">
                   <a href="product.html" th:text="${cartItem.title}">Product</a>
@@ -206,15 +216,31 @@
                 <td class="text-left" th:text="${cartItem.description}"></td>
                 <td class="text-left">
                   <div style="max-width: 200px;" class="input-group btn-block">
-                    <input type="text" class="form-control quantity" size="1" th:value="${cartItem.smallInStock}" name="quantity" />
+<!--                    <form th:action = "@{/update_cart}" method = "post" th:object = "${cartItems}">-->
+<!--                      <input type = "text" name = "test" th:value = "${cartItem.title}">-->
+<!--                      <button type="submit">Submit</button>-->
+<!--                    </form>-->
+                    <form th:action="@{/update_cart}" method="post">
+<!--                      <input type="text" name = "test">-->
+                      <input type="hidden" name="customerId" th:value="${cartItem.categoryId}">
+                      <input type="hidden" name="id" th:value="${cartItem.productId}">
+                      <input type="hidden" name="size" th:value="${cartItem.description}">
+                      <input type="hidden" name="prev" th:value="${cartItem.smallInStock}">
+                    <input type="number" class="form-control quantity" min="1" name="quantity" th:value="${cartItem.smallInStock}" />
                     <span class="input-group-btn">
-                          <button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Update">
+                          <button class="btn" title="Update" name="action" value="update" data-toggle="tooltip" type="submit" data-original-title="Update">
                             <i class="fa fa-refresh"></i>
                           </button>
-                          <button class="btn btn-danger" title="" data-toggle="tooltip" type="button"
+                    </span></form>
+                    <span><form th:action="@{/delete-from-cart}" method="post">
+                      <input type="hidden" name="customerId" th:value="${cartItem.categoryId}">
+                      <input type="hidden" name="id" th:value="${cartItem.productId}">
+                      <input type="hidden" name="size" th:value="${cartItem.description}">
+                      <input type="hidden" name="prev" th:value="${cartItem.smallInStock}">
+                          <button class="btn btn-danger" title="Delete" name="action" value="delete"  data-toggle="tooltip" type="submit"
                                   data-original-title="Remove">
                             <i class="fa fa-times-circle"></i>
-                          </button>
+                          </button></form>
                         </span>
                   </div>
                 </td>
@@ -224,7 +250,7 @@
               </tbody>
             </table>
           </div>
-        </form>
+<!--        </form>-->
         <h3 class="mtb_10">What next?</h3>
         <div class="panel-group mt_20" id="accordion">
           <div class="panel panel-default pull-left">
