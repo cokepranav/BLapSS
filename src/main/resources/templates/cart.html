@@ -137,7 +137,10 @@
                     <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
                     <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
                   </div>
-                  <li> <a href="checkout_page.html">Checkout</a></li>
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                  </div>
                   <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
               </li>
@@ -150,14 +153,10 @@
       </div>
     </div>
   </header>
-<!--  <form th:action = "@{/update_cart}" method = "post">-->
-<!--    <input type = "text" name = "test">-->
-<!--    <button type="submit">Submit</button>-->
-<!--  </form>-->
   <!-- =====  HEADER END  ===== -->
   <!-- =====  CONTAINER START  ===== -->
   <div class="container">
-    <div class="row ">
+
       <!-- =====  BANNER STRAT  ===== -->
       <div class="col-sm-12">
         <div class="breadcrumb ptb_20">
@@ -186,7 +185,9 @@
         </div>
       </div>
       <div class="col-sm-8 col-lg-9 mtb_20">
-<!--        <form enctype="multipart/form-data" method="post" action="#">-->
+        <div th:if="${param.q}" class="alert alert-danger" role="alert" th:text="${param.q}">
+          <p>ERROR!!</p>
+        </div>
           <div class="table-responsive">
             <table class="table table-bordered">
               <thead>
@@ -202,9 +203,7 @@
               <tbody>
 <!--              <p  style="font-size:125%"></p>-->
 <!--<div th:text=""></div>-->
-              <div th:if="${param.q}" class="alert alert-danger" role="alert" th:text="${param.q}">
-                <p>ERROR!!</p>
-              </div>
+
               <tr th:each="cartItem : ${cartItems}">
                 <td class="text-center">
                   <img th:src="@{${'/images/'+cartItem  .productId+'.jpg'}}"
@@ -216,12 +215,7 @@
                 <td class="text-left" th:text="${cartItem.description}"></td>
                 <td class="text-left">
                   <div style="max-width: 200px;" class="input-group btn-block">
-<!--                    <form th:action = "@{/update_cart}" method = "post" th:object = "${cartItems}">-->
-<!--                      <input type = "text" name = "test" th:value = "${cartItem.title}">-->
-<!--                      <button type="submit">Submit</button>-->
-<!--                    </form>-->
                     <form th:action="@{/update_cart}" method="post">
-<!--                      <input type="text" name = "test">-->
                       <input type="hidden" name="customerId" th:value="${cartItem.categoryId}">
                       <input type="hidden" name="id" th:value="${cartItem.productId}">
                       <input type="hidden" name="size" th:value="${cartItem.description}">
@@ -342,21 +336,21 @@
               <tbody>
               <tr>
                 <td class="text-right"><strong>Sub-Total:</strong></td>
-                <td class="text-right">₹210,000.00</td>
+                <td class="text-right">₹ <span th:text="${toto}">price</span></td>
               </tr>
               <tr>
                 <td class="text-right">
-                  <strong>Eco Tax (-2.00):</strong>
+                  <strong>SGST Tax (10%):</strong>
                 </td>
-                <td class="text-right">₹20,000.00</td>
+                <td class="text-right">₹<span th:with="quantity=0.1,var=${toto},tota=${var*quantity}" th:text="${tota}">total</span></td>
               </tr>
               <tr>
-                <td class="text-right"><strong>VAT (20%):</strong></td>
-                <td class="text-right">₹42,000.00</td>
+                <td class="text-right"><strong>CGST (10%):</strong></td>
+                <td class="text-right">₹<span th:with="quantity=0.1,var=${toto},tota=${var*quantity}" th:text="${tota}">total</span></td>
               </tr>
               <tr>
                 <td class="text-right"><strong>Total:</strong></td>
-                <td class="text-right">₹254,000.00</td>
+                <td class="text-right">₹<span th:with="quantity=1.2,var=${toto},tota=${var*quantity}" th:text="${tota}">total</span></td>
               </tr>
               </tbody>
             </table>
@@ -365,11 +359,11 @@
         <form action="index.html">
           <input class="btn pull-left mt_30" type="submit" value="Continue Shopping" />
         </form>
-        <form action="checkout.html">
-          <input class="btn pull-right mt_30" type="submit" value="Checkout" />
-        </form>
+        <a  th:href="@{/cartTOorder/{customerId}(customerId=${user.customerId})}">
+          <button class="btn pull-right mt_30" type="submit" value="Checkout">Checkout</button>
+        </a>
       </div>
-    </div>
+<!--    </div>-->
   </div>
   <!-- =====  CONTAINER END  ===== -->
   <!-- =====  FOOTER START  ===== -->

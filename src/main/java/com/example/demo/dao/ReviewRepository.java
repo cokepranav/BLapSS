@@ -2,6 +2,7 @@ package com.example.demo.dao;
 
 import java.util.List;
 
+import com.example.demo.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -47,20 +48,25 @@ public class ReviewRepository {
     }
 
     public List<Review> getAll() {
-        String sql_query = "SELECT * FROM Reivew";
+        String sql_query = "SELECT * FROM Review";
         return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Review.class));
     }
 
-    public List<Review> getAvgProductReview(int id){
-        String sql_query = "SELECT avg(rating) as rating FROM Review where productId=?";
-        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });
+//    public List<Product> getProductReviewJoin(int id){
+//        String sql_query = "SELECT avg(rating) as rating FROM Review where productId=?";
+//        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Product.class), new Object[] { id });
+//
+//    }
+
+    public List<Review> getProductReview(int id){
+            String sql_query = "SELECT * FROM Review where productId=?";
+            return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });
 
     }
 
-    public List<Review> getProductReview(int id){
-
-            String sql_query = "SELECT * FROM Review where productId=?";
-            return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { id });
+    public List<Review> gethisreview(int productId,int customerId){
+        String sql_query = "SELECT * FROM Review where productId=? and customerId=?";
+        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { productId,customerId });
 
     }
 

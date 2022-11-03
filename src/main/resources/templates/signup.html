@@ -116,7 +116,10 @@
                     <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
                     <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
                   </div>
-                  <li> <a href="checkout_page.html">Checkout</a></li>
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                  </div>
                   <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
               </li>

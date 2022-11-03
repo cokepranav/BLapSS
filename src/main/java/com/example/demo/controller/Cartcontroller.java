@@ -29,11 +29,15 @@ public class Cartcontroller {
         List<Product> cartItems = cartItemRepository.getCartitemasProduct(customerId);
         model.addAttribute("cartItems", cartItems);
         model.addAttribute("notinStock","");
+        List<CartItem> total=cartItemRepository.getTotal(customerId);
+        float sum= 0.0F;
+        for(int i=0;i<total.size();i++){
+            sum=sum+total.get(i).getUnitPrice();
+        }
+        model.addAttribute("toto",sum);
         return "cart";
     }
 
-
-//    @PostMapping("/update-cart")
     @RequestMapping(value = "/update_cart",method=RequestMethod.POST)
     public String updateCart(@RequestParam("customerId") int customerId,@RequestParam("id")int id,@RequestParam("size")String size,@RequestParam("prev")int prev,@RequestParam("quantity")int quantity, Model model){
         Product product= productRepository.getProductById(id);
@@ -46,7 +50,6 @@ public class Cartcontroller {
             }
             else{
                 int x=product.getSmallInStock()+prev;
-//                model.addAttribute("notinStock","We have only "+()+" In Stock");
                 return "redirect:/cart/" + String.valueOf(customerId)+"?q=Only+"+x+"+left!!";
             }
         }
@@ -59,7 +62,6 @@ public class Cartcontroller {
                   int x=product.getMediumInStock()+prev;
 //                return "redirect:/cart/{customerId}q=?";
                   return "redirect:/cart/" + String.valueOf(customerId)+"?q=Only+"+x+"+left!!";
-//                model.addAttribute("notinStock","We have only "+(product.getMediumInStock()+prev)+" In Stock");
             }
         }
         if(size.equals("L")){
@@ -69,11 +71,9 @@ public class Cartcontroller {
             }
             else{
                   int x=product.getLargeInStock()+prev;
-//                model.addAttribute("notinStock","We have only "+(product.getLargeInStock()+prev)+" In Stock");
                   return "redirect:/cart/" + String.valueOf(customerId)+"?q=Only+"+x+"+left!!";
             }
         }
-//        model.addAttribute("notinStock","");
         model.addAttribute( "user",securityservices.findLoggedInCustomer());
         List<Product> cartItems = cartItemRepository.getCartitemasProduct(customerId);
         model.addAttribute("cartItems", cartItems);
@@ -83,7 +83,6 @@ public class Cartcontroller {
     @PostMapping("/delete-from-cart")
     public String deletefromCart(@RequestParam("customerId") int customerId,@RequestParam("id")int id,@RequestParam("size")String size,@RequestParam("prev")int prev, Model model){
         Product product= productRepository.getProductById(id);
-//        System.out.println(customerId);
         if(size.equals("S")){
             cartItemRepository.deleteCartItem(customerId,id,size);
             productRepository.intoCartUpdate(id,size,product.getSmallInStock()+prev);
@@ -100,6 +99,9 @@ public class Cartcontroller {
         List<Product> cartItems = cartItemRepository.getCartitemasProduct(customerId);
         model.addAttribute("cartItems", cartItems);
         model.addAttribute("notinStock","");
+        if(cartItems.isEmpty()){
+            return "redirect:/cart/" + String.valueOf(customerId)+"?f=CartEmpty";
+        }
         return "redirect:/cart/"+String.valueOf(customerId);
     }
 }

@@ -63,5 +63,12 @@ public class CartItemRepository {
         String sql_query="delete from cartitem where customerId=? and productId=? and size=?";
         jdbcTemplate.update(sql_query,customerId,productId,size);
     }
-
+    public void  deleteCartItemofCustomer(int customerId){
+        String sql_query="delete from cartitem where customerId=?";
+        jdbcTemplate.update(sql_query,customerId);
+    }
+    public List<CartItem> getTotal(int customerId){
+        String sql_query="select * from cartitem where customerId=?";
+        return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(CartItem.class), new Object[] { customerId });
+    }
 }

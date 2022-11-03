@@ -141,7 +141,10 @@
                   </div>
 <!--                  <li> <a th:action="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>-->
 <!--                  <li> <a href="cart_page.html">Cart</a></li>-->
-                  <li> <a href="checkout_page.html">Checkout</a></li>
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                  </div>
                   <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
               </li>
@@ -219,7 +222,7 @@
               <li>
                 <div style="font-size:105%" th:each="hi:${reviewAvg}">
                 <label>Rating:</label>
-                <span th:text="${hi.rating}"> product 20</span>
+                <span th:text="${rating}">Rating</span>
                 </div>
               </li>
               <li>
@@ -275,7 +278,7 @@
                   <a href="#1c" data-toggle="tab">Overview</a>
                 </li>
                 <li><a href="#2c" data-toggle="tab">Reviews</a></li>
-                <li><a href="#3c" data-toggle="tab">Give Reviews</a></li>
+                <li th:if="${!orderbyuser.isEmpty()}"><a href="#3c" data-toggle="tab"  th:if="${userreview.isEmpty()}">Give Reviews</a></li>
               </ul>
               <div class="tab-content ">
                 <div class="tab-pane active pt_20" id="1c">
@@ -289,7 +292,7 @@
                   <ul class="list-unstyled product_info mtb_20">
                     <li>
                       <label>Name:</label>
-                      <span> <a href="#" th:text="${customer.userName}">BLAPS</a></span>
+<!--                      <span> <a href="#" th:text="${customer.userName}">BLAPS</a></span>-->
                     </li>
                     <li>
                       <label style="font-size:110%">Review:</label>
@@ -302,7 +305,7 @@
                   </ul>
                   </div>
                 </div>
-                <div class="tab-pane" id="3c">
+                <div class="tab-pane" id="3c" >
                   <form class="form-horizontal" th:action = "@{/Product/{id}(id=${products.productId})}" method="post">
                     <div id="review"></div>
                     <h4 class="mt_20 mb_30">Write a review</h4>
@@ -339,6 +342,7 @@
                     </div>
                   </form>
                 </div>
+<!--                <div class="tab-pane" id="3c" th:if="${!userreview.isEmpty()}">-->
               </div>
 
             </div>

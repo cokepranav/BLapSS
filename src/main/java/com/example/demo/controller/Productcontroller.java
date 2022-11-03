@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.dao.CartItemRepository;
-import com.example.demo.dao.CustomerRepository;
-import com.example.demo.dao.ProductRepository;
-import com.example.demo.dao.ReviewRepository;
+import com.example.demo.dao.*;
 import com.example.demo.models.Customer;
+import com.example.demo.models.OrderItem;
 import com.example.demo.models.Product;
 import com.example.demo.models.Review;
 import com.example.demo.service.SecurityServices;
@@ -32,6 +30,9 @@ public class Productcontroller {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -84,17 +85,27 @@ public class Productcontroller {
         if (product.getLargeInStock() > 0) availableSizes.add("L");
         model.addAttribute("availableSizes", availableSizes);
         List<Review> r=reviewRepository.getProductReview(id);
-        List<Review> r2=reviewRepository.getAvgProductReview(id);
+//        List<Product> r2=reviewRepository.getProductReviewJoin(id);
         Customer d=customerRepository.getCustomerbyID(id);
-        model.addAttribute("customer",d);
-
-        if(r2.isEmpty()){model.addAttribute("reviewAvg","not yet given");}
-        else{model.addAttribute("reviewAvg",r2);}
-        if(r.isEmpty()){
-            model.addAttribute("no","No reviews yet");
+//        model.addAttribute("customer",d);
+        model.addAttribute("review",r);
+        float sum= 0.0F;
+        for(int i=0;i<r.size();i++){
+            sum=sum+r.get(i).getRating();
         }
-        else{model.addAttribute("review",r);}
+        if(r.isEmpty()){sum=sum;model.addAttribute("rating","No rating yet!!");}
+        else{sum=sum/(r.size());model.addAttribute("rating",sum);}
+        List<Review> userreview=new ArrayList<>();
+        List<OrderItem> orderbyuser=new ArrayList<>();
+        Customer customerloggedin=securityServices.findLoggedInCustomer();
+        if(customerloggedin!=null){
+            userreview=reviewRepository.gethisreview(id,customerloggedin.getCustomerId());
+            orderbyuser=orderItemRepository.searchinOrder(id,customerloggedin.getCustomerId());
+        }
+//        if(userreview)
 //        System.out.println(p);
+        model.addAttribute("userreview",userreview);
+        model.addAttribute("orderbyuser",orderbyuser);
         return "Product";
     }
 
@@ -127,7 +138,6 @@ public class Productcontroller {
     public String giveReview(@RequestParam Map<String, String> newreview, @PathVariable("id") int productId,Model model){
         int i=Integer.parseInt(newreview.get("rating"));
         reviewRepository.createReview(new Review(securityServices.findLoggedInCustomer().getCustomerId(),productId,newreview.get("description"),i));
-//        model.addAttribute("user",securityServices.findLoggedInCustomer());
         return "redirect:/Product/{id}";
     }
 

@@ -6,11 +6,29 @@ public class OrderItem {
 
     private int productId;
 
-    private float unitPrice;
+    private int customerId;
 
     private int quantity;
 
     private String size;
+
+    private String createdDate;
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
 
     public int getOrderId() {
         return orderId;
@@ -26,14 +44,6 @@ public class OrderItem {
 
     public void setProductId(int productId) {
         this.productId = productId;
-    }
-
-    public float getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(float unitPrice) {
-        this.unitPrice = unitPrice;
     }
 
     public int getQuantity() {
@@ -54,8 +64,8 @@ public class OrderItem {
 
     @Override
     public String toString() {
-        return "OrderItem [orderId=" + orderId + ", productId=" + productId + ", unitPrice=" + unitPrice + ", quantity="
-                + quantity + ", size=" + size + "]";
+        return "OrderItem [orderId=" + orderId + ", productId=" + productId + ", customerId=" + customerId + ", quantity="
+                + quantity + ", size=" + size + ", createdDate=" + createdDate + "]";
     }
 
 
