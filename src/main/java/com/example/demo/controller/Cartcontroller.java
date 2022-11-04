@@ -2,8 +2,10 @@ package com.example.demo.controller;
 
 import com.example.demo.dao.CartItemRepository;
 import com.example.demo.dao.CartRepository;
+import com.example.demo.dao.CategoryRepository;
 import com.example.demo.dao.ProductRepository;
 import com.example.demo.models.CartItem;
+import com.example.demo.models.Category;
 import com.example.demo.models.Product;
 import com.example.demo.service.SecurityServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,9 @@ import java.util.List;
 public class Cartcontroller {
 
     @Autowired
+    CategoryRepository categoryRepository;
+
+    @Autowired
     ProductRepository productRepository;
     @Autowired
     SecurityServices securityservices;
@@ -25,6 +30,8 @@ public class Cartcontroller {
 
     @GetMapping("/cart/{customerId}")
     public String getCartByCustomerId(@PathVariable("customerId") int customerId, Model model) {
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("user",securityservices.findLoggedInCustomer());
         List<Product> cartItems = cartItemRepository.getCartitemasProduct(customerId);
         model.addAttribute("cartItems", cartItems);

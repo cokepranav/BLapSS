@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
+import com.example.demo.dao.CategoryRepository;
 import com.example.demo.dao.CustomerRepository;
+import com.example.demo.models.Category;
 import com.example.demo.models.Customer;
 import com.example.demo.service.SecurityServices;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,22 +17,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Controller
 public class Customercontroller {
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     private SecurityServices securityservices;
     @Autowired
     private CustomerRepository customerRepository;
 
-//    @RequestMapping(path="/index",method= RequestMethod.GET)
-//    public String indexduhh(){
-//        System.out.println("sss");return "indexform";
-//    }
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("naam",securityservices.findLoggedInUsername());
         model.addAttribute("customer", new Customer());
@@ -45,6 +49,8 @@ public class Customercontroller {
 
     @RequestMapping(path="/signup",method=RequestMethod.POST)
     public String makeit(Customer customer, Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("user",securityservices.findLoggedInCustomer());
         if(customerRepository.getCustomerbyUsername(customer.getUserName()) != null)
         {
@@ -60,6 +66,8 @@ public class Customercontroller {
 
     @GetMapping("/login")
     public String logi(Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("naam",securityservices.findLoggedInUsername());
         return "login";

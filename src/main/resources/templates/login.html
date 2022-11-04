@@ -172,18 +172,22 @@
           <div class="collapse navbar-collapse js-navbar-collapse">
             <ul id="menu" class="nav navbar-nav">
               <li> <a th:href="@{/index}">Home</a></li>
-              <li> <a href="category_page.html">Shop</a></li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop </a>
+                <ul class="dropdown-menu" >
+                  <div th:each="category:${categories}">
+                    <li> <a th:text="${category.title}" th:href="@{/products/{categoryId}(categoryId=${category.categoryId})}" style="color:white;">Shirts</a></li></div>
+                </ul>
+              </li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
                 <ul class="dropdown-menu">
                   <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
-                    <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
+                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}" style="color:white;">Cart</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Cart</a></li>
                   </div>
                   <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
-                    <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}" style="color:white;">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Your orders</a></li>
                   </div>
-                  <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
               </li>
               <li> <a href="about.html">About us</a></li>

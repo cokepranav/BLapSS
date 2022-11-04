@@ -63,6 +63,11 @@ public class ProductRepository {
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
 	}
 
+	public List<Product> productbyCategory(int categoryId){
+		String sql_query = "SELECT * FROM Product where categoryId=?";
+		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { categoryId });
+	}
+
 	public List<Product> sortbyINVS(){
 		String sql_query = "SELECT * FROM Product where categoryId=1 order by (smallInStock+mediumInStock+largeInStock) limit 4";
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class));
@@ -77,13 +82,8 @@ public class ProductRepository {
 
 
 	public Product getProductById(int productId) {
-		try {
 			String sql_query = "SELECT * FROM Product WHERE productId = ?";
 			return jdbcTemplate.queryForObject(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { productId });
-		} catch (EmptyResultDataAccessException e) {
-			// TODO: handle exception
-			return null;
-		}
 	}
 
 	public void intoCart(int productId,String size){

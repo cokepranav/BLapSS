@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.*;
-import com.example.demo.models.Customer;
-import com.example.demo.models.OrderItem;
-import com.example.demo.models.Product;
-import com.example.demo.models.Review;
+import com.example.demo.models.*;
 import com.example.demo.service.SecurityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +24,9 @@ public class Productcontroller {
 
     @Autowired
     CartItemRepository cartItemRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Autowired
     private ReviewRepository reviewRepository;
@@ -65,16 +65,23 @@ public class Productcontroller {
         productRepository.deleteProduct(product);
         return "Product";
     }
-
-    @GetMapping("/Products")
-//    @RequestMapping()
-    public String getALlpers(Model model){
-        model.addAttribute("products", productRepository.getAll());
+    @GetMapping("/products/{categoryId}")
+    public String getcategorypage(@PathVariable("categoryId")int categoryId,Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
+        List<Product> products=productRepository.productbyCategory(categoryId);
+        model.addAttribute("products",products);
+        List<Category> category=categoryRepository.getCategory(categoryId);
+        model.addAttribute("categor",category);
+        model.addAttribute("naam",securityServices.findLoggedInUsername());
+        model.addAttribute("user",securityServices.findLoggedInCustomer());
         return "AllProducts";
     }
+
     @GetMapping("/Product/{id}")
     public String getSingleProduct(@PathVariable("id")int id,Model model){
-//        Product p=productRepository.getProductById(id);
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("naam",securityServices.findLoggedInUsername());
         model.addAttribute("user",securityServices.findLoggedInCustomer());
         Product product = productRepository.getProductById(id);
@@ -84,17 +91,18 @@ public class Productcontroller {
         if (product.getMediumInStock() > 0) availableSizes.add("M");
         if (product.getLargeInStock() > 0) availableSizes.add("L");
         model.addAttribute("availableSizes", availableSizes);
-        List<Review> r=reviewRepository.getProductReview(id);
-//        List<Product> r2=reviewRepository.getProductReviewJoin(id);
-        Customer d=customerRepository.getCustomerbyID(id);
-//        model.addAttribute("customer",d);
-        model.addAttribute("review",r);
+//        List<Review> r=reviewRepository.getProductReview(id);
+        List<Product> productreviews=reviewRepository.getallproductreviewes(id);
         float sum= 0.0F;
-        for(int i=0;i<r.size();i++){
-            sum=sum+r.get(i).getRating();
+        for(int i=0;i<productreviews.size();i++){
+//            Product p=;
+            sum=sum+productreviews.get(i).getSmallInStock();
+            String custname=customerRepository.getCustomerbyID(productreviews.get(i).getCategoryId()).getUserName();
+            productreviews.get(i).setTitle(custname);
         }
-        if(r.isEmpty()){sum=sum;model.addAttribute("rating","No rating yet!!");}
-        else{sum=sum/(r.size());model.addAttribute("rating",sum);}
+        model.addAttribute("review",productreviews);
+        if(productreviews.isEmpty()){sum=sum;model.addAttribute("rating","No rating yet!!");}
+        else{sum=sum/(productreviews.size());model.addAttribute("rating",sum);}
         List<Review> userreview=new ArrayList<>();
         List<OrderItem> orderbyuser=new ArrayList<>();
         Customer customerloggedin=securityServices.findLoggedInCustomer();
@@ -102,21 +110,20 @@ public class Productcontroller {
             userreview=reviewRepository.gethisreview(id,customerloggedin.getCustomerId());
             orderbyuser=orderItemRepository.searchinOrder(id,customerloggedin.getCustomerId());
         }
-//        if(userreview)
-//        System.out.println(p);
         model.addAttribute("userreview",userreview);
         model.addAttribute("orderbyuser",orderbyuser);
         return "Product";
     }
 
     @GetMapping("/cart")
-    public String cart(Model model) {
-        return "Cart";
+    public String cart(Model model) {List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);return "Cart";
     }
 
     @PostMapping("/addToCart/{productId}")
     public String addToCart(@RequestParam Map<String, String> body,@PathVariable("productId") int productId, Model model) {
-
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("naam",securityServices.findLoggedInUsername());
         model.addAttribute("user",securityServices.findLoggedInCustomer());
         System.out.println("CART CONTROLLER CALLED");
@@ -126,16 +133,17 @@ public class Productcontroller {
         String size = body.get("size");
         System.out.println(size);
         if(cartItemRepository.gethiscart(customer.getCustomerId(), productId,size)!=null){
-            model.addAttribute("error_msg","Already in your cart!!");
             return "redirect:/Product/{productId}?q=Already+in+your+Cart";
         }
         productRepository.intoCart(productId,size);
         cartItemRepository.addToCart(customer, productId, size);
-        return "redirect:/Products";
+        return "redirect:/Product/{productId}?q=Added+to+your+Cart";
     }
 
     @PostMapping("/Product/{id}")
     public String giveReview(@RequestParam Map<String, String> newreview, @PathVariable("id") int productId,Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         int i=Integer.parseInt(newreview.get("rating"));
         reviewRepository.createReview(new Review(securityServices.findLoggedInCustomer().getCustomerId(),productId,newreview.get("description"),i));
         return "redirect:/Product/{id}";

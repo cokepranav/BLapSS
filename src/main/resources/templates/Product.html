@@ -76,7 +76,7 @@
             </div>
           </div>
           <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
-                                                                                                          th:src="@{/images/mylogo.png}"></a> </div>x
+                                                                                                          th:src="@{/images/mylogo.png}"></a> </div>
         </div>
         <nav class="navbar">
           <p>menu</p>
@@ -85,65 +85,23 @@
           <div class="collapse navbar-collapse js-navbar-collapse">
             <ul id="menu" class="nav navbar-nav">
               <li> <a th:href="@{/index}">Home</a></li>
-              <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle"
-                                                     data-toggle="dropdown">Collection </a>
-                <ul class="dropdown-menu mega-dropdown-menu row">
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Women's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Man's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <li class="dropdown-header">Children's</li>
-                      <li><a href="#">Kits</a></li>
-                      <li><a href="#">Training</a></li>
-                      <li><a href="#">Fashion</a></li>
-                      <li><a href="#">Equipment</a></li>
-                      <li><a href="#">Homeware</a></li>
-                      <li><a href="#">Souvenirs</a></li>
-                      <li><a href="#">Clearance</a></li>
-                    </ul>
-                  </li>
-                  <li class="col-md-3">
-                    <ul>
-                      <img class="sub-hover" th:src="@{/images/xnxx.jpeg}"
-                           style="height:50%;">
-                    </ul>
-                  </li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop </a>
+                <ul class="dropdown-menu" >
+                  <div th:each="category:${categories}">
+                    <li> <a th:text="${category.title}" th:href="@{/products/{categoryId}(categoryId=${category.categoryId})}" style="color:white;">Shirts</a></li></div>
                 </ul>
               </li>
-              <li> <a href="category_page.html">Shop</a></li>
               <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
                 <ul class="dropdown-menu">
                   <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
-                    <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
+                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}" style="color:white;">Cart</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Cart</a></li>
                   </div>
 <!--                  <li> <a th:action="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>-->
 <!--                  <li> <a href="cart_page.html">Cart</a></li>-->
                   <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
-                    <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}" style="color:white;">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Your orders</a></li>
                   </div>
                   <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
@@ -168,7 +126,7 @@
           <h1 th:text="${products.title}">Blaps...</h1>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="category_page.html">Products</a></li>
+            <li><a href="category_page.html">Product</a></li>
             <li th:text="${products.title}" class="active">blaps...</li>
           </ul>
         </div>
@@ -195,11 +153,7 @@
           <div class="col-md-6">
             <div>
               <a class="thumbnails">
-                <div th:switch="${products.categoryId}">
-                  <img th:case="'1'" class="card-img-top" th:src="@{${'/images/'+products.productId+'.jpg'}}" alt="Card image cap">
-                  <img th:case="'2'" class="card-img-top" th:src="@{${'/images/'+products.productId+'.jpg'}}" alt="Card image cap">
-                  <p th:case="*">User is some other thing</p>
-                </div>
+                <img class="card-img-top" th:src="${products.imageLink}" alt="Card image cap">
                 </a>
             </div>
           </div>
@@ -220,7 +174,7 @@
                 <span th:text="${products.productId}"> product 20</span>
               </li>
               <li>
-                <div style="font-size:105%" th:each="hi:${reviewAvg}">
+                <div style="font-size:105%">
                 <label>Rating:</label>
                 <span th:text="${rating}">Rating</span>
                 </div>
@@ -292,7 +246,7 @@
                   <ul class="list-unstyled product_info mtb_20">
                     <li>
                       <label>Name:</label>
-<!--                      <span> <a href="#" th:text="${customer.userName}">BLAPS</a></span>-->
+                      <span> <a href="#" th:text="${rev.title}">BLAPS</a></span>
                     </li>
                     <li>
                       <label style="font-size:110%">Review:</label>
@@ -300,7 +254,7 @@
                     </li>
                     <li>
                       <label>Rating:</label>
-                      <span> <a href="#" th:text="${rev.rating}">BLAPS</a></span>
+                      <span> <a href="#" th:text="${rev.smallInStock}">BLAPS</a></span>
                     </li>
                   </ul>
                   </div>
@@ -420,52 +374,4 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-<!--<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--      xsi:schemaLocation="http://thymeleaf.org ">-->
-<!--<head>-->
-<!--  <meta charset="UTF-8">-->
-<!--  <title>idi product page amma</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h2>Bhai bhai bhai......</h2>-->
-<!--<table>-->
-<!--  <tr>-->
-<!--    <th>producId</th>-->
-<!--    <th>categoryId</th>-->
-<!--    <th>title</th>-->
-<!--    <th>description</th>-->
-<!--    <th>unitPrice</th>-->
-<!--    <th>inventory</th>-->
-<!--  </tr>-->
-<!--  <tr th:each="prods:${products}">-->
-<!--    <td th:text="${prods.productId}"></td>-->
-<!--    <td th:text="${prods.categoryId}"></td>-->
-<!--    <td th:text="${prods.title}"></td>-->
-<!--    <td th:text="${prods.description}"></td>-->
-<!--    <td th:text="${prods.unitPrice}"></td>-->
-<!--    <td th:text="${prods.smallInStock}"></td>-->
-<!--  </tr>-->
-<!--</table>-->
-<!--</body>-->
-<!--</html>-->
-
-<!--                        <span class="fa fa-stack" th:if="${review.rating>='1' AND review.rating<'2'}"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                                class="fa fa-star fa-stack-1x"></i></span>-->
-<!--                      <span class="fa fa-stack" th:if="${review.rating>='2' AND review.rating<'3'}"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                              class="fa fa-star fa-stack-1x"></i></span>-->
-<!--                      <span class="fa fa-stack" th:if="${review.rating>='3' AND review.rating<'4'}"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                              class="fa fa-star fa-stack-1x"></i></span>-->
-<!--                      <span class="fa fa-stack" th:if="${review.rating>='4' AND review.rating<'5'}"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                              class="fa fa-star fa-stack-1x"></i></span>-->
-<!--                      <span class="fa fa-stack" th:if="${review.rating>='5'}"><i class="fa fa-star-o fa-stack-1x"></i><i-->
-<!--                              class="fa fa-star fa-stack-1x"></i></span>-->

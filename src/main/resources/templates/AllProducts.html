@@ -1,35 +1,230 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 
 <head>
-  <meta charset="UTF-8">
-  <title>All Products</title>
+  <meta charset="utf-8">
+  <title>BLAPS</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="Language" content="en-us">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
+  <link rel="shortcut icon" href="./images/icon-logo.png" type="image/x-icon">
 </head>
+
 <body>
-<div align="center">
-  <h1>Product List</h1>
-  <table border="1" cellpadding="10">
-    <thead>
-    <tr>
-      <th>Product ID</th>
-      <th>Cateory ID</th>
-      <th>Title</th>
-      <th>About</th>
-      <th>Unit Price</th>
-      <th>Inventory</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="product : ${ProductsList}">
-      <td th:text="${product.productId}">Product ID</td>
-      <td th:text="${product.categoryId}">Category ID</td>
-      <td th:text="${product.title}">Title</td>
-      <td th:text="${product.description}">About</td>
-      <td th:text="${product.unitPrice}">Price</td>
-      <td th:text="${product.smallInStock}">Inventory</td>
-    </tr>
-    </tbody>
-  </table>
+<!-- =====  LODER  ===== -->
+<div class="loder"></div>
+<div class="wrapper">
+  <!-- =====  HEADER START  ===== -->
+  <header id="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <div class="header-top-left">
+              <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Days a week from 9:00 am to 7:00
+                    pm</span></div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-8">
+            <ul class="header-top-right text-right">
+              <li class="account">
+                <!--                <a th:href="@{/login}">My Account</a>-->
+                <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                  <a th:href="@{/register}" th:case="${false}"><i class="fa fa-power-off"></i>     Sign up</a>
+                  <span th:case="${true}"><span th:text=" 'Hola!! ' + ${naam}">Hola!! User</span></span>
+                  <span th:case="*">LOL!!</span>
+                </span></li>
+              <li class="account">
+                <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+<!--                  <span class="glyphicon glyphicon-log-out"></span>-->
+                  <span th:case="${true}" >
+                      <span th:switch="${user.role}">
+                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
+                  </span></span>
+              </li>
+              <li class="account">
+                <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+<!--                  <span class="glyphicon glyphicon-log-out"></span>-->
+                  <span th:case="${true}"><a href="#" th:href="@{/logou}"><i class="fa fa-power-off"></i> Logout</a>
+                  </span></span>
+              </li>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="header">
+      <div class="container-fluid">
+        <div class="row headerLogo">
+          <div class="col-xs-12 col-sm-4">
+            <div class="main-search mt_40">
+              <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg "
+                     autocomplete="off" type="text">
+              <span class="input-group-btn">
+                  <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+          </div>
+          <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
+                                                                                                          th:src="@{/images/mylogo.png}"></a> </div>
+        </div>
+        <nav class="navbar">
+          <p>menu</p>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span
+                  class="i-bar"><i class="fa fa-bars"></i></span></button>
+          <div class="collapse navbar-collapse js-navbar-collapse">
+            <ul id="menu" class="nav navbar-nav">
+              <li> <a th:href="@{/index}">Home</a></li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop </a>
+                <ul class="dropdown-menu" >
+                  <div th:each="category:${categories}">
+                    <li> <a th:text="${category.title}" th:href="@{/products/{categoryId}(categoryId=${category.categoryId})}" style="color:white;">Shirts</a></li></div>
+                </ul>
+              </li>
+              <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
+                <ul class="dropdown-menu">
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}" style="color:white;">Cart</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Cart</a></li>
+                  </div>
+                  <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
+                    <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}" style="color:white;">Your orders</a></li>
+                    <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Your orders</a></li>
+                  </div>
+                </ul>
+              </li>
+              <li> <a href="about.html">About us</a></li>
+              <li> <a href="contact_us.html">Contact us</a></li>
+            </ul>
+          </div>
+          <!-- /.nav-collapse -->
+        </nav>
+      </div>
+    </div>
+  </header>
+  <!-- =====  HEADER END  ===== -->
+  <!-- =====  CONTAINER START  ===== -->
+  <div class="container">
+    <div class="row ">
+      <!-- =====  BANNER STRAT  ===== -->
+      <div class="col-sm-12">
+        <div class="ptb_20 breadcrumb">
+          <h1 th:text="${categor.get(0).title}">Blaps...</h1>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="category_page.html">Products</a></li>
+            <li th:text="${categor.get(0).title}" class="active">blaps...</li>
+          </ul>
+        </div>
+      </div>
+      <!-- =====  BREADCRUMB END===== -->
+    </div>
+
+  <div class="row ">
+    <div class="col-sm-12 mt_30">
+      <!-- =====  PRODUCT TAB  ===== -->
+      <div id="product-tab" class="mt_10">
+        <div class="heading-part mb_10 ">
+          <h2 class="main_title" th:text="${categor.get(0).title}">Featured Category</h2>
+        </div>
+        <ul class="nav text-right">
+          <li><a href="#Featured" data-toggle="tab"></a> </li>
+        </ul>
+
+
+      </div>
+<!--      <img class="card-img-top" th:src="${product.imageLink}" alt="Card image cap">-->
+      <!-- =====  PRODUCT TAB  END ===== -->
+    </div>
+  </div>
+  <div class="cards1" style="justify-content:center;  align-items: center;  vertical-align: middle;   ">
+    <div  th:each="product : ${products}" class=" card1" style="justify-self: center;" >
+      <a href="" th:href="@{/Product/{id}(id=${product.productId})}">
+        <div class="card-body"  style=" color:white;">
+          <img class="card-img-top" th:src="${product.imageLink}" alt="Card image cap">
+          <h4 class="card-title" th:text = "${product.title}">John Doe</h4>
+          <p class="card-text" th:text = "${product.description}">Some example text.</p>
+          <p class="card-text" th:text = "${product.unitPrice}">Some example text.</p>
+        </div></a>
+    </div>
+  </div>
+  </div>
+  <!-- =====  CONTAINER END  ===== -->
+  <!-- =====  FOOTER START  ===== -->
+  <div class="footer pt_60">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 footer-block">
+          <h6 class="footer-title ptb_20">Information</h6>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Delivery Information</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 footer-block">
+          <h6 class="footer-title ptb_20">Services</h6>
+          <ul>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Site Map</a></li>
+            <li><a href="#">Wish List</a></li>
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Order History</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 footer-block"></div>
+        <div class="col-md-3 footer-block">
+          <h6 class="footer-title ptb_20">Contacts</h6>
+          <ul>
+            <li>Warehouse & Offices,</li>
+            <li>12345 Street name, Bucharest RO</li>
+            <li>(+91) 999 999 999</li>
+            <li>nike@store.com</li>
+            <li><a href="index.html">www.nike.com/in</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom mt_60 ptb_20">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-4">
+          </div>
+          <div class="col-sm-4">
+            <div class="copyright-part text-center">@2022 All Rights Reserved</div>
+          </div>
+          <div class="col-sm-4">
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- =====  FOOTER END  ===== -->
+    <a id="scrollup"><i class="fa-solid fa-up"></i></a>
+  </div>
+  <!-- =====  FOOTER END  ===== -->
 </div>
+<!--<a id="scrollup"></a>-->
+<script th:src="@{/script/jQuery_v3.1.1.min.js}"></script>
+<script th:src="@{/script/owl.carousel.min.js}"></script>
+<script th:src="@{/script/bootstrap.min.js}"></script>
+<script th:src="@{/script/jquery.magnific-popup.js}"></script>
+<script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
+<script th:src="@{/script/custom.js}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
 </html>

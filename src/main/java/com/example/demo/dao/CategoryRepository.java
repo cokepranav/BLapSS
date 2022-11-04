@@ -35,9 +35,14 @@ public class CategoryRepository {
 
     }
 
-    public List<Category> getCategoryByCategoryId(String cartId) {
+    public List<Category> getCategories() {
+        String sql = "SELECT * FROM Category";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Category.class));
+    }
+
+    public List<Category> getCategory(int categoryId) {
         String sql = "SELECT * FROM Category WHERE categoryId=?";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Category.class), new Object[]{cartId});
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Category.class), new Object[]{categoryId});
     }
 
 }

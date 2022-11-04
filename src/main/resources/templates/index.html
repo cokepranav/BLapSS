@@ -84,71 +84,22 @@
                     <div class="collapse navbar-collapse js-navbar-collapse">
                         <ul id="menu" class="nav navbar-nav">
                             <li> <a th:href="@{/index}">Home</a></li>
-                            <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle"
-                                                                   data-toggle="dropdown">Collection </a>
-                                <ul class="dropdown-menu mega-dropdown-menu row">
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Women's</li>
-                                            <li><a href="#">Kits</a></li>
-                                            <li><a href="#">Training</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Equipment</a></li>
-                                            <li><a href="#">Homeware</a></li>
-                                            <li><a href="#">Souvenirs</a></li>
-                                            <li><a href="#">Clearance</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Man's</li>
-                                            <li><a href="#">Kits</a></li>
-                                            <li><a href="#">Training</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Equipment</a></li>
-                                            <li><a href="#">Homeware</a></li>
-                                            <li><a href="#">Souvenirs</a></li>
-                                            <li><a href="#">Clearance</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <li class="dropdown-header">Children's</li>
-                                            <li><a href="#">Kits</a></li>
-                                            <li><a href="#">Training</a></li>
-                                            <li><a href="#">Fashion</a></li>
-                                            <li><a href="#">Equipment</a></li>
-                                            <li><a href="#">Homeware</a></li>
-                                            <li><a href="#">Souvenirs</a></li>
-                                            <li><a href="#">Clearance</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="col-md-3">
-                                        <ul>
-                                            <img class="sub-hover" th:src="@{/images/xnxx.jpeg}"
-                                                 style="height:50%;">
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-<!--                            <li> <a href="category_page.html">Shop</a></li>-->
                             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Shop </a>
-                                <ul class="dropdown-menu">
-                                    <li> <a th:href="@{/Shirt}">Shirts</a></li>
-                                    <li> <a th:href="@{/Pant}">Pants</a></li>
+                                <ul class="dropdown-menu" >
+                                    <div th:each="category:${categories}">
+                                        <li> <a th:text="${category.title}" th:href="@{/products/{categoryId}(categoryId=${category.categoryId})}" style="color:white;">Shirts</a></li></div>
                                 </ul>
                             </li>
                             <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
                                 <ul class="dropdown-menu">
                                     <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>
-                                        <li> <a th:href="@{/login}" th:case="${false}">Cart</a></li>
+                                    <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}" style="color:white;">Cart</a></li>
+                                        <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Cart</a></li>
                                     </div>
                                     <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                                        <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}">Your orders</a></li>
-                                        <li> <a th:href="@{/login}" th:case="${false}">Your orders</a></li>
+                                        <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}" style="color:white;">Your orders</a></li>
+                                        <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Your orders</a></li>
                                     </div>
-                                    <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                                 </ul>
                             </li>
                             <li> <a href="about.html">About us</a></li>
@@ -221,7 +172,7 @@
                 <div class="feature-i-left ptb_30 ">
                     <i class="fa fa-chrome icon-right fa-3x"></i>
                     <h6>Order Online</h6>
-                    <p>25*7</p>
+                    <p>24*7</p>
                 </div>
             </div>
             <div class="col-sm-4 mt_20 cms-icon ">
@@ -239,43 +190,13 @@
                 </div>
             </div>
         </div>
-        <div class="row ">
-            <div class="col-sm-12 mt_30">
-                <!-- =====  PRODUCT TAB  ===== -->
-                <div id="product-tab" class="mt_10">
-                    <div class="heading-part mb_10 ">
-                        <h2 class="main_title">Featured Products</h2>
-                    </div>
-                    <ul class="nav text-right">
-                        <li><a href="#Featured" data-toggle="tab">Featured</a> </li>
-                    </ul>
-<!--                    </div>-->
-
-                    <div class="container-fluid" th:each="threeproducts : ${products}">
-                        <div class="row justify-content-around mb-3">
-                            <div class="col-lg-4">
-                                <a href="" th:href="@{/Product/{id}(id=${threeproducts.productId})}">
-                                <div class="card" style="width:400px">
-                                    <img class="card-img-top" th:src="@{${'/images/'+threeproducts.productId+'.jpg'}}" alt="Card image cap">
-                                    <div class="card-body">
-                                        <h4 class="card-title" th:text = "${threeproducts.title}">John Doe</h4>
-                                        <p class="card-text" th:text = "${threeproducts.description}">Some example text.</p>
-                                        <p class="card-text" th:text = "${threeproducts.unitPrice}">Some example text.</p>
-                                    </div>
-                                </div></a>
-                            </div></div></div>
-
-                </div>
-                <!-- =====  PRODUCT TAB  END ===== -->
-            </div>
-        </div>
         <div class="cards1" style="justify-content:center;  align-items: center;  vertical-align: middle;   ">
             <div  th:each="shirt4 : ${shirts}" class=" card1" style="justify-self: center;" >
 
                 <a href="" th:href="@{/Product/{id}(id=${shirt4.productId})}">
                 <div class="card-body"  style=" color:white;">
-
-                    <img class="card-img-top" th:src="@{${'/images/'+shirt4.productId+'.jpg'}}" alt="Card image cap">
+                    <img class="card-img-top" th:src="${shirt4.imageLink}" alt="Card image cap">
+<!--                    <img class="card-img-top" th:src="@{${'/images/'+shirt4.productId+'.jpg'}}" alt="Card image cap">-->
                     <h4 class="card-title" th:text = "${shirt4.title}">John Doe</h4>
                     <p class="card-text" th:text = "${shirt4.description}">Some example text.</p>
                     <p class="card-text" th:text = "${shirt4.unitPrice}">Some example text.</p>
@@ -288,8 +209,7 @@
 
                 <a href="" th:href="@{/Product/{id}(id=${pant4.productId})}">
                     <div class="card-body"  style=" color:white;">
-
-                        <img class="card-img-top" th:src="@{${'/images/'+pant4.productId+'.jpg'}}" alt="Card image cap">
+                        <img class="card-img-top" th:src="${pant4.imageLink}" alt="Card image cap">
                         <h4 class="card-title" th:text = "${pant4.title}">John Doe</h4>
                         <p class="card-text" th:text = "${pant4.description}">Some example text.</p>
                         <p class="card-text" th:text = "${pant4.unitPrice}">Some example text.</p>

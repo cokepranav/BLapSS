@@ -1,12 +1,10 @@
 package com.example.demo.controller;
 
 import com.example.demo.dao.CartItemRepository;
+import com.example.demo.dao.CategoryRepository;
 import com.example.demo.dao.OrderItemRepository;
 import com.example.demo.dao.ReviewRepository;
-import com.example.demo.models.CartItem;
-import com.example.demo.models.OrderItem;
-import com.example.demo.models.Product;
-import com.example.demo.models.Review;
+import com.example.demo.models.*;
 import com.example.demo.service.SecurityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +17,9 @@ import java.util.List;
 
 @Controller
 public class Ordercontroller {
+
+    @Autowired
+    CategoryRepository categoryRepository;
 
     @Autowired
     CartItemRepository cartItemRepository;
@@ -35,6 +36,8 @@ public class Ordercontroller {
 
     @GetMapping("/cartTOorder/{customerId}")
     public String cartToorder(@PathVariable("customerId") int customerId, Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         List<CartItem> cartItems=cartItemRepository.getCartItemsBycustomerId(customerId);
         for(int i=0;i<cartItems.size();i++){
             CartItem cartItem=cartItems.get(i);
@@ -46,6 +49,8 @@ public class Ordercontroller {
 
     @GetMapping("/orders/{customerId}")
     public String Orderspage(@PathVariable("customerId") int customerId,Model model){
+        List<Category> categories=categoryRepository.getCategories();
+        model.addAttribute("categories",categories);
         model.addAttribute("user",securityServices.findLoggedInCustomer());
         model.addAttribute("naam",securityServices.findLoggedInUsername());
         List<Product> ordereditems=orderItemRepository.getOrderitemasProduct(customerId);

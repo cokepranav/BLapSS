@@ -67,7 +67,11 @@ public class ReviewRepository {
     public List<Review> gethisreview(int productId,int customerId){
         String sql_query = "SELECT * FROM Review where productId=? and customerId=?";
         return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Review.class), new Object[] { productId,customerId });
+    }
 
+    public List<Product> getallproductreviewes(int productId){
+        String sql_query="SELECT product.productId as productId,customerId as categoryId,title,imageLink,review.description as description,unitPrice,rating as smallInStock,mediumInStock,largeInStock from product inner join review where product.productId=? and product.productId=review.productId";
+        return jdbcTemplate.query(sql_query,new BeanPropertyRowMapper<>(Product.class), new Object[] { productId});
     }
 
 }
