@@ -48,7 +48,7 @@ public class CustomerAddress {
 		return postalcode;
 	}
 
-	public void setPostalcode(String pincode) {
+	public void setPostalcode(String postalcode) {
 		this.postalcode = postalcode;
 	}
 

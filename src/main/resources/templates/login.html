@@ -8,12 +8,7 @@
   <meta name="Language" content="en-us">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
-  <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-  <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrapx.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/css/newcss.css}" />
-  <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/font/css/font-awesome.min.css}" />
   <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
   <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
@@ -49,7 +44,7 @@
 <!--                  <span class="glyphicon glyphicon-log-out"></span>-->
                   <span th:case="${true}" >
                       <span th:switch="${user.role}">
-                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
+                      <a href="#" th:href="@{/admin}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
                   </span></span>
               </li>
               <li class="account">
@@ -191,13 +186,13 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3 footer-block">
-        <h6 class="footer-title ptb_20">Board Memebrs</h6>
+        <h6 class="footer-title ptb_20">Board Members</h6>
         <ul>
-          <li><a href="">Kamma Sai Kiran</a></li>
-          <li><a href="">Essamaraju Sasi Kiran</a></li>
-          <li><a href="">Banavath Mourya Naik</a></li>
-          <li><a href="">Savaturi Bhagavat Sai</a></li>
-          <li><a href="">N Sai Pranav</a></li>
+          <li><a href=""><i class="fa fa-user"></i>&nbspKamma Sai Kiran</a></li>
+          <li><a href=""><i class="fa fa-user"></i>&nbspEssamaraju Sasi Kiran</a></li>
+          <li><a href=""><i class="fa fa-user"></i>&nbspBanavath Mourya Naik</a></li>
+          <li><a href=""><i class="fa fa-user"></i>&nbspSavaturi Bhagavat Sai</a></li>
+          <li><a href=""><i class="fa fa-user"></i>&nbspN Sai Pranav</a></li>
         </ul>
       </div>
       <div class="col-md-3 footer-block">
@@ -209,7 +204,7 @@
           <li>Room no. 237,235,223</li>
           <li>Visweshwaraya Hostel</li>
           <li>IIT BHU</li>
-          <li><a href="https://github.com/cokepranav/BLapSS">GITHUB</a></li>
+          <li><a href="https://github.com/cokepranav/BLapSS"><i class="fa fa-codepen"></i>GITHUB</a></li>
         </ul>
       </div>
     </div>

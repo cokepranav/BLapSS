@@ -8,12 +8,7 @@
     <meta name="Language" content="en-us">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" th:href="@{/fonts/fontawesome.min.css}" />
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrapx.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/fonts/newcss.css}" />
-    <link rel="stylesheet" type="text/css" th:href="@{/fonts/fontawesome.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/font/css/font-awesome.min.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
@@ -40,7 +35,7 @@
                             <li class="account">
                                 <!--                <a th:href="@{/login}">My Account</a>-->
                                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
-                  <a th:href="@{/register}" th:case="${false}"><i class="fa fa-power-off"></i>     Sign up</a>
+                  <a th:href="@{/register}" th:case="${false}" href=""><i class="fa fa-power-off"></i>     Sign up</a>
                   <span th:case="${true}"><span th:text=" 'Hola!! ' + ${naam}">Hola!! User</span></span>
                   <span th:case="*">LOL!!</span>
                 </span></li>
@@ -155,13 +150,11 @@
                 </div>
 
             </div>
-
-
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+                <i class="fa fa-arrow-left"></i>
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
+                <span class="fa fa-arrow-right"></span>
             </a>
         </div>
     </div>
@@ -249,13 +242,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 footer-block">
-                <h6 class="footer-title ptb_20">Board Memebrs</h6>
+                <h6 class="footer-title ptb_20">Board Members</h6>
                 <ul>
-                    <li><a href="">Kamma Sai Kiran</a></li>
-                    <li><a href="">Essamaraju Sasi Kiran</a></li>
-                    <li><a href="">Banavath Mourya Naik</a></li>
-                    <li><a href="">Savaturi Bhagavat Sai</a></li>
-                    <li><a href="">N Sai Pranav</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>&nbspKamma Sai Kiran</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>&nbspEssamaraju Sasi Kiran</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>&nbspBanavath Mourya Naik</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>&nbspSavaturi Bhagavat Sai</a></li>
+                    <li><a href=""><i class="fa fa-user"></i>&nbspN Sai Pranav</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-block">
@@ -267,7 +260,7 @@
                     <li>Room no. 237,235,223</li>
                     <li>Visweshwaraya Hostel</li>
                     <li>IIT BHU</li>
-                    <li><a href="https://github.com/cokepranav/BLapSS">GITHUB</a></li>
+                    <li><a href="https://github.com/cokepranav/BLapSS"><i class="fa fa-codepen"></i>GITHUB</a></li>
                 </ul>
             </div>
         </div>
@@ -295,8 +288,7 @@
 <script th:src="@{/script/jQuery_v3.1.1.min.js}"></script>
 <script th:src="@{/script/owl.carousel.min.js}"></script>
 <script th:src="@{/script/bootstrap.min.js}"></script>
-<script th:src="@{/script/jquery.magnific-popup.js}"></script>
-<script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
+<!--<script th:src="@{/script/jquery.magnific-popup.js}"></script>-->
 <script th:src="@{/script/custom.js}"></script>
 </body>
 </html>

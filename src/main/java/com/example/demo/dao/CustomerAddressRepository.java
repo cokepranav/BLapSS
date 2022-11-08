@@ -16,7 +16,7 @@ public class CustomerAddressRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
     public void insertAddressFromCustId(CustomerAddress customerAddress) {
-        String sql_query = "INSERT INTO CustomerAddress (street,city,country,postalcode) values( ?,?,?,?)";
+        String sql_query = "INSERT INTO CustomerAddress (street,city,country,postalcode) values(?,?,?,?)";
         jdbcTemplate.update(sql_query,
                 customerAddress.getStreet(),
                 customerAddress.getCity(),
