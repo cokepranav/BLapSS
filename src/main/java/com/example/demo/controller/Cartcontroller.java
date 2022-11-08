@@ -45,6 +45,7 @@ public class Cartcontroller {
         model.addAttribute("user",securityservices.findLoggedInCustomer());
         model.addAttribute("naam",securityservices.findLoggedInUsername());
         List<Product> cartItems = cartItemRepository.getCartitemasProduct(customerId);
+//        if(cartItems)
         model.addAttribute("cartItems", cartItems);
         model.addAttribute("notinStock","");
         List<CartItem> total=cartItemRepository.getTotal(customerId);

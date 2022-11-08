@@ -26,8 +26,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="header-top-left">
-              <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Days a week from 9:00 am to 7:00
-                    pm</span></div>
+              <div class="contact"><span class="hidden-xs hidden-sm hidden-md">B L A P S</span></div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-8">
@@ -338,7 +337,7 @@
         <a th:href="@{/index}">
           <input class="btn pull-left mt_30" type="submit" value="Continue Shopping" />
         </a>
-        <a  th:href="@{/cartTOorder/{customerId}(customerId=${user.customerId})}">
+        <a  th:if="${!cartItems.isEmpty()}" th:href="@{/cartTOorder/{customerId}(customerId=${user.customerId})}">
           <button class="btn pull-right mt_30" type="submit" value="Checkout">Checkout</button>
         </a>
       </div>

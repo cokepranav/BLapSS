@@ -26,8 +26,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4">
             <div class="header-top-left">
-              <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Days a week from 9:00 am to 7:00
-                    pm</span></div>
+              <div class="contact"><span class="hidden-xs hidden-sm hidden-md">B L A P S</span></div>
             </div>
           </div>
           <div class="col-xs-12 col-sm-8">
@@ -147,7 +146,8 @@
     <div  th:each="product : ${products}" class=" card1" style="justify-self: center;" >
       <a href="" th:href="@{/Product/{id}(id=${product.productId})}">
         <div class="card-body"  style=" color:white;">
-          <img class="card-img-top" th:src="${product.imageLink}" alt="Card image cap">
+<!--          <img class="card-img-top" th:src="${product.imageLink}" alt="Card image cap">-->
+          <img class="card-img-top" th:src="@{${'/images/'+product.productId+'.jpg'}}" alt="Card image cap">
           <h4 class="card-title" th:text = "${product.title}">John Doe</h4>
           <p class="card-text" th:text = "${product.description}">Some example text.</p>
           <p class="card-text" th:text = "${product.unitPrice}">Some example text.</p>

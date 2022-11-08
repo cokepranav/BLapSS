@@ -26,8 +26,7 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-4">
                         <div class="header-top-left">
-                            <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Days a week from 9:00 am to 7:00
-                    pm</span></div>
+                            <div class="contact"><span class="hidden-xs hidden-sm hidden-md">B L A P S</span></div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-8">
@@ -126,7 +125,7 @@
             <div class="carousel-inner">
 
                 <div class="item active sub-hover">
-                    <a th:href="@{/products/{categoryId}(categoryId='1')}"><img class="sub-hover" th:src="@{/images/b2.jpg}"     alt="Los Angeles"
+                    <a th:href="@{/products/{categoryId}(categoryId='3')}"><img class="sub-hover" th:src="@{/images/b2.jpg}"     alt="Los Angeles"
                             style="width:100%;" ></a>
                     <div class="carousel-caption">
 <!--                        <h5>event 1</h5>-->
@@ -190,10 +189,10 @@
                 <!-- =====  PRODUCT TAB  ===== -->
                 <div id="product-tab" class="mt_10">
                     <div class="heading-part mb_10 ">
-                        <h2 class="main_title" >Featured Category</h2>
+                        <h2 class="main_title" >Featured</h2>
                     </div>
                     <ul class="nav text-right">
-                        <li><a href="#Featured">Featured</a> </li>
+                        <li><a href="#Featured">Shirts</a> </li>
                     </ul>
                 </div>
             </div>
@@ -202,7 +201,8 @@
             <div  th:each="shirt4 : ${shirts}" class=" card1" style="justify-self: center;" >
                 <a href="" th:href="@{/Product/{id}(id=${shirt4.productId})}">
                 <div class="card-body"  style=" color:white;">
-                    <img class="card-img-top" th:src="${shirt4.imageLink}" alt="Card image cap">
+<!--                    <img class="card-img-top" th:src="${shirt4.imageLink}" alt="Card image cap">-->
+                    <img class="card-img-top" th:src="@{${'/images/'+shirt4.productId+'.jpg'}}" alt="Card image cap">
                     <h4 class="card-title" th:text = "${shirt4.title}">John Doe</h4>
                     <p class="card-text" th:text = "${shirt4.description}">Some example text.</p>
                     <p class="card-text" th:text = "${shirt4.unitPrice}">Some example text.</p>
@@ -210,12 +210,26 @@
             </div>
 
         </div>
+        <div class="row ">
+            <div class="col-sm-12 mt_30">
+                <!-- =====  PRODUCT TAB  ===== -->
+                <div  class="mt_10">
+                    <div class="heading-part mb_10 ">
+<!--                        <h2 class="main_title" >Featured</h2>-->
+                    </div>
+                    <ul class="nav text-right">
+                        <li><a href="#Featured">Pants</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="cards1" style="justify-content:center;  align-items: center;  vertical-align: middle;   ">
             <div  th:each="pant4 : ${pants}" class=" card1" style="justify-self: center;" >
 
                 <a href="" th:href="@{/Product/{id}(id=${pant4.productId})}">
                     <div class="card-body"  style=" color:white;">
-                        <img class="card-img-top" th:src="${pant4.imageLink}" alt="Card image cap">
+<!--                        <img class="card-img-top" th:src="${pant4.imageLink}" alt="Card image cap">-->
+                        <img class="card-img-top" th:src="@{${'/images/'+pant4.productId+'.jpg'}}" alt="Card image cap">
                         <h4 class="card-title" th:text = "${pant4.title}">John Doe</h4>
                         <p class="card-text" th:text = "${pant4.description}">Some example text.</p>
                         <p class="card-text" th:text = "${pant4.unitPrice}">Some example text.</p>
