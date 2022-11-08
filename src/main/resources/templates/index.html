@@ -8,14 +8,16 @@
     <meta name="Language" content="en-us">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/fontawesome.min.css}" />
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrapx.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/newcss.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/fonts/fontawesome.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
-    <link rel="shortcut icon" href="./images/icon-logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -47,7 +49,7 @@
 <!--                  <span class="glyphicon glyphicon-log-out"></span>-->
                   <span th:case="${true}" >
                       <span th:switch="${user.role}">
-                      <a href="#" th:href="@{/index}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
+                      <a href="#" th:href="@{/admin}" th:case="'admin'"><i class="fa fa-user-secret"></i> Admin</a></span>
                   </span></span>
                             </li>
                             <li class="account">
@@ -66,13 +68,15 @@
             <div class="container-fluid">
                 <div class="row headerLogo">
                     <div class="col-xs-12 col-sm-4">
+                        <form th:action="@{/search}">
                         <div class="main-search mt_40">
-                            <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg "
+                            <input id="search-input" name="keyword"  placeholder="garfield" class="form-control input-lg "
                                    autocomplete="off" type="text">
                             <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+                  <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                 </span>
                         </div>
+                        </form>
                     </div>
                     <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
                                                                                                                   th:src="@{/images/mylogo.png}"></a> </div>
@@ -102,8 +106,6 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li> <a href="about.html">About us</a></li>
-                            <li> <a href="contact_us.html">Contact us</a></li>
                         </ul>
                     </div>
                     <!-- /.nav-collapse -->
@@ -129,22 +131,24 @@
             <div class="carousel-inner">
 
                 <div class="item active sub-hover">
-                    <img class="sub-hover" th:src="@{/images/b2.jpg}"     alt="Los Angeles"
-                         style="width:100%;">
+                    <a th:href="@{/products/{categoryId}(categoryId='1')}"><img class="sub-hover" th:src="@{/images/b2.jpg}"     alt="Los Angeles"
+                            style="width:100%;" ></a>
                     <div class="carousel-caption">
 <!--                        <h5>event 1</h5>-->
                     </div>
                 </div>
 
                 <div class="item sub-hover">
-                    <img class="sub-hover" th:src="@{/images/b3.jpg}" alt="Chicago" style="width:100%;">
+                    <a th:href="@{/products/{categoryId}(categoryId='1')}">
+                    <img class="sub-hover" th:src="@{/images/b3.jpg}" alt="Chicago" style="width:100%;"></a>
                     <div class="carousel-caption">
 <!--                        <h5>event 2</h5>-->
                     </div>
                 </div>
 
                 <div class="item sub-hover">
-                    <img class="sub-hover" th:src="@{/images/b22.jpg}" alt="New York" style="width:100%;">
+                    <a th:href="@{/products/{categoryId}(categoryId='2')}">
+                        <img class="sub-hover" th:src="@{/images/b22.jpg}" alt="New York" style="width:100%;"></a>
                     <div class="carousel-caption">
 <!--                        <h5>event 3</h5>-->
                     </div>
@@ -155,11 +159,9 @@
 
             <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                 <span class="glyphicon glyphicon-chevron-left"></span>
-<!--                <span class="sr-only">Previous</span>-->
             </a>
             <a class="right carousel-control" href="#myCarousel" data-slide="next">
                 <span class="glyphicon glyphicon-chevron-right"></span>
-<!--                <span class="sr-only">Next</span>-->
             </a>
         </div>
     </div>
@@ -190,13 +192,24 @@
                 </div>
             </div>
         </div>
+        <div class="row ">
+            <div class="col-sm-12 mt_30">
+                <!-- =====  PRODUCT TAB  ===== -->
+                <div id="product-tab" class="mt_10">
+                    <div class="heading-part mb_10 ">
+                        <h2 class="main_title" >Featured Category</h2>
+                    </div>
+                    <ul class="nav text-right">
+                        <li><a href="#Featured">Featured</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="cards1" style="justify-content:center;  align-items: center;  vertical-align: middle;   ">
             <div  th:each="shirt4 : ${shirts}" class=" card1" style="justify-self: center;" >
-
                 <a href="" th:href="@{/Product/{id}(id=${shirt4.productId})}">
                 <div class="card-body"  style=" color:white;">
                     <img class="card-img-top" th:src="${shirt4.imageLink}" alt="Card image cap">
-<!--                    <img class="card-img-top" th:src="@{${'/images/'+shirt4.productId+'.jpg'}}" alt="Card image cap">-->
                     <h4 class="card-title" th:text = "${shirt4.title}">John Doe</h4>
                     <p class="card-text" th:text = "${shirt4.description}">Some example text.</p>
                     <p class="card-text" th:text = "${shirt4.unitPrice}">Some example text.</p>
@@ -221,7 +234,7 @@
             <div class="cms_banner">
                 <div class="col-xs-12 mt_60">
                     <div id="subbanner4" class="sub-hover">
-                        <div class="sub-img"><a href="#"><img th:src="@{images/men_shirt_b.jpg}"  alt="Sub Banner5" class="img-responsive"></a>
+                        <div class="sub-img"><a th:href="@{/products/{categoryId}(categoryId='1')}"><img th:src="@{images/men_shirt_b.jpg}"  alt="Sub Banner5" class="img-responsive"></a>
                         </div>
                     </div>
                 </div>
@@ -236,34 +249,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 footer-block">
-                <h6 class="footer-title ptb_20">Information</h6>
+                <h6 class="footer-title ptb_20">Board Memebrs</h6>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Delivery Information</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="">Kamma Sai Kiran</a></li>
+                    <li><a href="">Essamaraju Sasi Kiran</a></li>
+                    <li><a href="">Banavath Mourya Naik</a></li>
+                    <li><a href="">Savaturi Bhagavat Sai</a></li>
+                    <li><a href="">N Sai Pranav</a></li>
                 </ul>
             </div>
             <div class="col-md-3 footer-block">
-                <h6 class="footer-title ptb_20">Services</h6>
-                <ul>
-                    <li><a href="#">Returns</a></li>
-                    <li><a href="#">Site Map</a></li>
-                    <li><a href="#">Wish List</a></li>
-                    <li><a href="#">My Account</a></li>
-                    <li><a href="#">Order History</a></li>
-                </ul>
             </div>
             <div class="col-md-3 footer-block"></div>
             <div class="col-md-3 footer-block">
                 <h6 class="footer-title ptb_20">Contacts</h6>
                 <ul>
-                    <li>Warehouse & Offices,</li>
-                    <li>12345 Street name, Bucharest RO</li>
-                    <li>(+91) 999 999 999</li>
-                    <li>nike@store.com</li>
-                    <li><a href="index.html">www.nike.com/in</a></li>
+                    <li>Room no. 237,235,223</li>
+                    <li>Visweshwaraya Hostel</li>
+                    <li>IIT BHU</li>
+                    <li><a href="https://github.com/cokepranav/BLapSS">GITHUB</a></li>
                 </ul>
             </div>
         </div>
@@ -294,31 +298,5 @@
 <script th:src="@{/script/jquery.magnific-popup.js}"></script>
 <script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
 <script th:src="@{/script/custom.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
-
-
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-<!--      xsi:schemaLocation="http://thymeleaf.org ">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <title>B L A P S</title>-->
-<!--    <link th:href="@{/css/main.css}" rel="stylesheet">-->
-<!--    <script type="text/javascript" th:src="@{/script/action.js}"></script>-->
-<!--    &lt;!&ndash;    <script type="text/javascript" th:src="@{/js/action.js}"></script>&ndash;&gt;-->
-<!--&lt;!&ndash;    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">&ndash;&gt;-->
-<!--</head>-->
-<!--<body>-->
-<!--<p>working daasa</p>-->
-<!--<h2>heading</h2>-->
-<!--<p><strong>heheheheh</strong></p>-->
-<!--<button type="button" th:onclick="demo()">Show fkin Alert</button>-->
-
-<!--</body>-->
-<!--</html>-->

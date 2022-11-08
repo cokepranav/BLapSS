@@ -9,13 +9,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+  <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrapx.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/newcss.css}" />
+  <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}" />
   <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
   <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
-  <link rel="shortcut icon" href="./images/icon-logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -57,7 +59,6 @@
                   </span></span>
               </li>
 
-
             </ul>
           </div>
         </div>
@@ -67,13 +68,15 @@
       <div class="container-fluid">
         <div class="row headerLogo">
           <div class="col-xs-12 col-sm-4">
-            <div class="main-search mt_40">
-              <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg "
-                     autocomplete="off" type="text">
-              <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+            <form th:action="@{/search}">
+              <div class="main-search mt_40">
+                <input id="search-input" name="keyword"  placeholder="garfield" class="form-control input-lg "
+                       autocomplete="off" type="text">
+                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                 </span>
-            </div>
+              </div>
+            </form>
           </div>
           <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
                                                                                                           th:src="@{/images/mylogo.png}"></a> </div>
@@ -97,17 +100,12 @@
                     <li> <a th:case="${true}" th:href="@{/cart/{customerId}(customerId=${user.customerId})}" style="color:white;">Cart</a></li>
                     <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Cart</a></li>
                   </div>
-<!--                  <li> <a th:action="@{/cart/{customerId}(customerId=${user.customerId})}">Cart</a></li>-->
-<!--                  <li> <a href="cart_page.html">Cart</a></li>-->
                   <div th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
                     <li> <a th:case="${true}" th:href="@{/orders/{customerId}(customerId=${user.customerId})}" style="color:white;">Your orders</a></li>
                     <li> <a th:href="@{/login}" th:case="${false}" style="color:white;">Your orders</a></li>
                   </div>
-                  <li> <a href="product_detail_page.html">Product Detail Page</a></li>
                 </ul>
               </li>
-              <li> <a href="about.html">About us</a></li>
-              <li> <a href="contact_us.html">Contact us</a></li>
             </ul>
           </div>
           <!-- /.nav-collapse -->
@@ -312,34 +310,25 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 footer-block">
-          <h6 class="footer-title ptb_20">Information</h6>
+          <h6 class="footer-title ptb_20">Board Memebrs</h6>
           <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Delivery Information</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="">Kamma Sai Kiran</a></li>
+            <li><a href="">Essamaraju Sasi Kiran</a></li>
+            <li><a href="">Banavath Mourya Naik</a></li>
+            <li><a href="">Savaturi Bhagavat Sai</a></li>
+            <li><a href="">N Sai Pranav</a></li>
           </ul>
         </div>
         <div class="col-md-3 footer-block">
-          <h6 class="footer-title ptb_20">Services</h6>
-          <ul>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Site Map</a></li>
-            <li><a href="#">Wish List</a></li>
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Order History</a></li>
-          </ul>
         </div>
         <div class="col-md-3 footer-block"></div>
         <div class="col-md-3 footer-block">
           <h6 class="footer-title ptb_20">Contacts</h6>
           <ul>
-            <li>Warehouse & Offices,</li>
-            <li>12345 Street name, Bucharest RO</li>
-            <li>(+91) 999 999 999</li>
-            <li>nike@store.com</li>
-            <li><a href="index.html">www.nike.com/in</a></li>
+            <li>Room no. 237,235,223</li>
+            <li>Visweshwaraya Hostel</li>
+            <li>IIT BHU</li>
+            <li><a href="https://github.com/cokepranav/BLapSS">GITHUB</a></li>
           </ul>
         </div>
       </div>
@@ -370,8 +359,5 @@
 <script th:src="@{/script/jquery.magnific-popup.js}"></script>
 <script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
 <script th:src="@{/script/custom.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
-</html>
+</html>>

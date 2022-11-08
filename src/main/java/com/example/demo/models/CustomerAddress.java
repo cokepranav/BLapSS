@@ -10,7 +10,7 @@ public class CustomerAddress {
 
 	private String country;
 
-	private String pincode;
+	private String postalcode;
 
 	public int getCustomerId() {
 		return customerId;
@@ -44,18 +44,18 @@ public class CustomerAddress {
 		this.country = country;
 	}
 
-	public String getPincode() {
-		return pincode;
+	public String getPostalcode() {
+		return postalcode;
 	}
 
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
+	public void setPostalcode(String pincode) {
+		this.postalcode = postalcode;
 	}
 
 	@Override
 	public String toString() {
-		return "CustomerAddress [customerId=" + customerId + ", street=" + street + ", city=" + city + ", country="
-				+ country + ", pincode=" + pincode + "]";
+		return   street +", "+ city+ ", " +
+				postalcode + ", "+ country;
 	}
 
 

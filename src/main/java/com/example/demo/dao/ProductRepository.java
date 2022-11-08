@@ -18,14 +18,14 @@ public class ProductRepository {
 	JdbcTemplate jdbcTemplate;
 
 	public List<Product> search(String keyword ){
-		String sql_query = "select * from Product where match(title) against (?)";
+//		keyword = "%"+keyword+"%";
+		String sql_query = "select * from Product where match(title, description) against(?)";
 		return jdbcTemplate.query(sql_query, new BeanPropertyRowMapper<>(Product.class), new Object[] { keyword } );
 	}
 
 	public void createProduct(Product product) {
-		String sql_query = "INSERT INTO Product (productId,categoryId, title, imageLink, description, unitPrice, smallInStock, mediumInStock, largeInStock) VALUES (?,?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql_query = "INSERT INTO Product (categoryId, title, imageLink, description, unitPrice, smallInStock, mediumInStock, largeInStock) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql_query,
-				product.getProductId(),
 				product.getCategoryId(),
 				product.getTitle(),
 				product.getImageLink(),
@@ -38,10 +38,12 @@ public class ProductRepository {
 	}
 
 	public void updateProduct(Product product) {
-		String sql_query = "UPDATE Product SET categoryId = ?, title = ?, description = ?, unitPrice = ?, inventory = ? WHERE productId = ?";
+		System.out.println(product.getProductId());
+		String sql_query = "UPDATE Product SET categoryId = ?, title = ?, imageLink = ?, description = ?, unitPrice = ?, smallInStock = ?, mediumInStock = ?, largeInStock = ? WHERE productId = ?";
 		jdbcTemplate.update(sql_query,
 				product.getCategoryId(),
 				product.getTitle(),
+				product.getImageLink(),
 				product.getDescription(),
 				product.getUnitPrice(),
 				product.getSmallInStock(),

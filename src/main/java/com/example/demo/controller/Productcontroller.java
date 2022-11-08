@@ -40,10 +40,17 @@ public class Productcontroller {
 //    @GetMapping("/SaveProduct")
 
     @RequestMapping(path = "/search", method = {RequestMethod.GET, RequestMethod.POST})
-    public String search(@ModelAttribute String keyword , Model model){
-        keyword = "Title";
+    public String search(@RequestParam("keyword") String keyword , Model model){
+//        keyword = "Title";
+        System.out.println(keyword);
         List <Product> ProductsList = productRepository.search(keyword);
-        model.addAttribute("ProductsList", ProductsList);
+        model.addAttribute("products",ProductsList);
+        List<Category> categories=categoryRepository.getCategories();
+        List<Category> category=categoryRepository.getCategory(4);
+        model.addAttribute("categor",category);
+        model.addAttribute("categories",categories);
+        model.addAttribute("naam",securityServices.findLoggedInUsername());
+        model.addAttribute("user",securityServices.findLoggedInCustomer());
         return  "AllProducts";
     }
 

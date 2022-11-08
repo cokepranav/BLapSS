@@ -28,6 +28,17 @@ public class CustomerRepository {
         return jdbcTemplate.queryForObject(sqlst, BeanPropertyRowMapper.newInstance(Customer.class), new Object[] { userName });
     }
 
+    public List<Customer> getCustomers(){
+        String sqlst="SELECT * from Customer";
+        return jdbcTemplate.query(sqlst, BeanPropertyRowMapper.newInstance(Customer.class));
+    }
+
+    public List<Customer> getUsers(){
+        String role="user";
+        String sqlst="SELECT * from Customer where role=?";
+        return jdbcTemplate.query(sqlst, BeanPropertyRowMapper.newInstance(Customer.class),new Object[]{role});
+    }
+
     public String getFullName() {
         return this.customer.getFirstName()+this.customer.getLastName();
     }

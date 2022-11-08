@@ -9,13 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" type="text/css" th:href="@{/css/font-awesome.min.css}" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrapx.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/newcss.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{/css/fontawesome.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.css}" />
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/magnific-popup.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
-    <link rel="shortcut icon" href="./images/icon-logo.png" type="image/x-icon">
 </head>
 
 <body>
@@ -39,7 +41,7 @@
                                 <!--                <a th:href="@{/login}">My Account</a>-->
                                 <span th:switch="${#authentication}? ${#authorization.expression('isAuthenticated()')} : ${false}">
                   <a th:href="@{/register}" th:case="${false}"><i class="fa fa-power-off"></i>     Sign up</a>
-                  <span th:case="${true}"><span th:text=" 'Hola!! ' + ${user.userName}">Hola!! User</span></span>
+                  <span th:case="${true}"><span th:text=" 'Hola!! ' + ${naam}">Hola!! User</span></span>
                   <span th:case="*">LOL!!</span>
                 </span></li>
                             <li class="account">
@@ -56,6 +58,7 @@
                   <span th:case="${true}"><a href="#" th:href="@{/logou}"><i class="fa fa-power-off"></i> Logout</a>
                   </span></span>
                             </li>
+
                         </ul>
                     </div>
                 </div>
@@ -65,13 +68,15 @@
             <div class="container-fluid">
                 <div class="row headerLogo">
                     <div class="col-xs-12 col-sm-4">
-                        <div class="main-search mt_40">
-                            <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg "
-                                   autocomplete="off" type="text">
-                            <span class="input-group-btn">
-                  <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+                        <form th:action="@{/search}">
+                            <div class="main-search mt_40">
+                                <input id="search-input" name="keyword"  placeholder="garfield" class="form-control input-lg "
+                                       autocomplete="off" type="text">
+                                <span class="input-group-btn">
+                  <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
                 </span>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                     <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" th:href="@{/index}"> <img alt="BLAPS" height="150px" width="150px"
                                                                                                                     th:src="@{/images/mylogo.png}"></a> </div>
@@ -101,8 +106,6 @@
                                     </div>
                                 </ul>
                             </li>
-                            <li> <a href="about.html">About us</a></li>
-                            <li> <a href="contact_us.html">Contact us</a></li>
                         </ul>
                     </div>
                     <!-- /.nav-collapse -->
@@ -117,10 +120,10 @@
         <!-- =====  BANNER STRAT  ===== -->
         <div class="col-sm-12">
             <div class="breadcrumb ptb_20">
-                <h1>Shopping Cart</h1>
+                <h1>Your Orders</h1>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li class="active">Shopping Cart</li>
+                    <li class="active">Your Orders</li>
                 </ul>
             </div>
         </div>
@@ -132,13 +135,13 @@
                         <h2 class="main_title">Top category</h2>
                     </div>
                     <ul class="nav  main-navigation collapse in">
-                        <li><a href="#">Shirts</a></li>
-                        <li><a href="#">Pants</a></li>
+                        <div th:each="category:${categories}">
+                            <li> <a th:text="${category.title}" th:href="@{/products/{categoryId}(categoryId=${category.categoryId})}" style="color:white;">Shirts</a></li></div>
                     </ul>
                 </div>
             </div>
             <div class="left_banner left-sidebar-widget mb_50 mt_30">
-                <a href="#"><img src="images/left1.jpg" alt="Left Banner" class="img-responsive" /></a>
+                <a href="#"><img th:src="@{/images/suga_order.jpg}" alt="Left Banner" class="img-responsive" /></a>
             </div>
         </div>
         <div class="col-sm-8 col-lg-9 mtb_20">
@@ -159,11 +162,12 @@
                     <tbody>
                     <tr th:each="cartItem : ${cartItems}">
                         <td class="text-center">
+                            <a th:href="@{/Product/{id}(id=${cartItem.productId})}">
                             <img th:src="${cartItem.imageLink}"
-                                 style="height:20%; max-width: 50%" alt="Item" title="Item" />
+                                 style="height:20%; max-width: 50%" alt="Item" title="Item" /></a>
                         </td>
                         <td class="text-left">
-                            <a th:href="product.html" th:text="${cartItem.title}">Product</a>
+                            <a  th:text="${cartItem.title}" th:href="@{/Product/{id}(id=${cartItem.productId})}">Product</a>
                         </td>
                         <td class="text-left" th:text="${cartItem.description}"></td>
                         <td class="text-left" th:text="${cartItem.smallInStock}"></td>
@@ -187,34 +191,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3 footer-block">
-                    <h6 class="footer-title ptb_20">Information</h6>
+                    <h6 class="footer-title ptb_20">Board Memebrs</h6>
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="">Kamma Sai Kiran</a></li>
+                        <li><a href="">Essamaraju Sasi Kiran</a></li>
+                        <li><a href="">Banavath Mourya Naik</a></li>
+                        <li><a href="">Savaturi Bhagavat Sai</a></li>
+                        <li><a href="">N Sai Pranav</a></li>
                     </ul>
                 </div>
                 <div class="col-md-3 footer-block">
-                    <h6 class="footer-title ptb_20">Services</h6>
-                    <ul>
-                        <li><a href="#">Returns</a></li>
-                        <li><a href="#">Site Map</a></li>
-                        <li><a href="#">Wish List</a></li>
-                        <li><a href="#">My Account</a></li>
-                        <li><a href="#">Order History</a></li>
-                    </ul>
                 </div>
                 <div class="col-md-3 footer-block"></div>
                 <div class="col-md-3 footer-block">
                     <h6 class="footer-title ptb_20">Contacts</h6>
                     <ul>
-                        <li>Warehouse & Offices,</li>
-                        <li>12345 Street name, Bucharest RO</li>
-                        <li>(+91) 999 999 999</li>
-                        <li>nike@store.com</li>
-                        <li><a href="index.html">www.nike.com/in</a></li>
+                        <li>Room no. 237,235,223</li>
+                        <li>Visweshwaraya Hostel</li>
+                        <li>IIT BHU</li>
+                        <li><a href="https://github.com/cokepranav/BLapSS">GITHUB</a></li>
                     </ul>
                 </div>
             </div>
@@ -245,11 +240,5 @@
 <script th:src="@{/script/jquery.magnific-popup.js}"></script>
 <script th:src="@{/script/jquery.firstVisitPopup.js}"></script>
 <script th:src="@{/script/custom.js}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 </body>
-
 </html>
-
-

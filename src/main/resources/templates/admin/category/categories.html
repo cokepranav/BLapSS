@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BLAPS</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<h1 style="text-align: center;">CATEGORIES</h1>
+
+<div style="margin: auto; width: 50%;">
+
+  <div>
+    <a type="button" th:href="@{/admin}" class="btn btn-secondary">home</a>
+  </div>
+
+  <div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Title</th>
+        <th scope="col">Update</th>
+        <th scope="col">Delete</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="category, iStat : ${categories}">
+        <th scope="row" th:text="${iStat.count}"></th>
+        <td th:text="${category.getCategoryId()}"></td>
+        <td th:text="${category.getTitle()}"></td>
+        <td>
+          <a type="button" th:href="@{/admin/categories/updateCategory/{id}(id=${category.getCategoryId()})}" class="btn btn-primary">update</a>
+        </td>
+        <td>
+          <a type="button" th:href="@{/admin/categories/deleteCategory/{id}(id=${category.getCategoryId()})}" class="btn btn-danger">delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <a type="button" th:href="@{/admin/categories/addCategory}" class="btn btn-primary">add category</a>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -51,12 +51,13 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers("/css/**");
         web.ignoring().antMatchers("/script/**");
         web.ignoring().antMatchers("/images/**");
+        web.ignoring().antMatchers("/fonts/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests().antMatchers("/","/products/**","/index/**","/signup/**","/register/**","/logout/**","/Product/**","/Products/**","/home/**","/loginreg/**","/SaveProduct/**","/search/**").permitAll();
+        http.authorizeRequests().antMatchers("/","/admin/**","/products/**","/index/**","/signup/**","/register/**","/logout/**","/Product/**","/Products/**","/home/**","/loginreg/**","/SaveProduct/**","/search/**").permitAll();
         http
                 .csrf().disable()
                 .authorizeRequests().antMatchers("/login").permitAll()
